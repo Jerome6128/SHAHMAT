@@ -2,13 +2,16 @@
   <div class="row">
     <div class="col">
       <h1>Competitor's information</h1>
-      <%= @competitor.brand_name %>
-      <%= @competitor.address %>
-      <%= @competitor.website %>
-      <%= @competitor.siren %>
-      <%= @competitor.rcs %>
-      <%= @competitor.siret %>
-      <%= @competitor.naf %>
+      <ul>
+        <li><%= @competitor.brand_name %></li>
+        <li><%= @competitor.address %></li>
+        <li><%= @competitor.website %></li>
+        <li><%= @competitor.siren %></li>
+        <li><%= @competitor.rcs %></li>
+        <li><%= @competitor.siret %></li>
+        <li><%= @competitor.naf %></li>
+      </ul>
+
     </div>
   </div>
 </div>
