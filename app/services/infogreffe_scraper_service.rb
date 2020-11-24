@@ -6,19 +6,21 @@ class InfogreffeScraperService
   def scrape
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.infogreffe.com/entreprise-societe/#{@siren}"
-    raise
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
+    #retrieve the name of the company
     element = html_doc.search('//*[@id="identification"]/h1').text.split(" ")
-    element = element.take(element.index("Partager")).join(" ")
-    html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[1]/div[1]').each do |element|
-      address = element.text
-    end
-    html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/p[1]').each do |element|
-      naf = element.text
-    end
+    brand_name = element.take(element.index("Partager")).join(" ")
+
+    #retrieve the address of the company
+    element = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[1]/div[1]').text.split(" ")
+    address = element.drop(element.index("-") + 1).join(" ")
+
+    #retrieve the naf code of the company
+    naf = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/p[1]').text
+
+    #retrieve the key figures of the company
     key_figures = []
-    i = 0
     html_doc.search('//*[@id="chiffresCles"]/tbody/tr').each do |row|
       year = []
       row.search('td').each do |column|
@@ -30,8 +32,8 @@ class InfogreffeScraperService
         profit: year[2],
         workforce: year[3]
       }
-      i += 1
     end
-    siret = key_figures
+
+    { brand_name: brand_name, address: address, naf: naf, key_figures: key_figures }
   end
 end
