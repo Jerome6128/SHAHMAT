@@ -7,4 +7,6 @@ class Competitor < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  has_many :key_figures
 end
