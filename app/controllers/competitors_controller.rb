@@ -4,6 +4,16 @@ class CompetitorsController < ApplicationController
   def index
     @competitors = Competitor.all
     @user = User.new
+
+    if params[:query].present?
+      sql_query = " \
+        competitors.brand_name @@ :query \
+        OR competitors.siren @@ :query \
+      "
+      @competitors = Competitor.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @competitors = Competitor.all
+    end
   end
 
   def show
