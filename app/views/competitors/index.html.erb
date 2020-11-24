@@ -1,12 +1,21 @@
-<%= link_to 'Create a new competitor', new_competitor_path, class: "btn btn-success text-white btn-lg" %>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Competitors dashboard</h1>
-        <% @competitors.each do |competitor| %>
-          <%= link_to competitor_path(competitor) %>
-        <% end %>
+<div class="flex-container">
+  <%= render "shared/sidebar" %>  
+  
+  <div class="container container-top-band sidebar-margin pl-4">
+    <h2>My dashboard</h2>
+    <br><br>
+    <div class="cards">
+      <% @competitors.each do |competitor| %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2><%= link_to competitor.brand_name, competitor_path(competitor) %></h2>
+          </div>
+        </div>
+      <% end %>      
     </div>
   </div>
 </div>
+
+<!-- <%= link_to 'Create a new competitor', new_competitor_path, class: "btn btn-success text-white btn-lg" %> -->

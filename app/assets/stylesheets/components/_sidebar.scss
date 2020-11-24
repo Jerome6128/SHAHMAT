@@ -1,0 +1,25 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  margin: 0px 10px 5px 5px;
+  padding: 10px 10px 10px 10px;
+  display: inline-block;
+  background-color: white;
+  position: fixed;
+}
+
+.sidebar-margin {
+  margin-left: 200px;
+}
+
+.sidebar img {
+  margin-bottom: 20px;
+}
+
+.sidebar-logo img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}

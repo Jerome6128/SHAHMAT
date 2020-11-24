@@ -1,11 +1,13 @@
 class CompetitorsController < ApplicationController
   def index
     @competitors = Competitor.all
+    @user = User.new
   end
 
   def show
     @competitor = Competitor.find(params[:id])
   end
+
 
   def new
     @competitor = Competitor.new
@@ -26,4 +28,5 @@ class CompetitorsController < ApplicationController
   def competitor_params
     params.require(:competitor).permit(:siren)
   end
+
 end
