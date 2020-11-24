@@ -2,11 +2,13 @@ require_relative '../services/infogreffe_scraper_service.rb'
 class CompetitorsController < ApplicationController
   def index
     @competitors = Competitor.all
+    @user = User.new
   end
 
   def show
     @competitor = Competitor.find(params[:id])
   end
+
 
   def new
     @competitor = Competitor.new
@@ -30,6 +32,7 @@ class CompetitorsController < ApplicationController
   def competitor_params
     params.require(:competitor).permit(:siren)
   end
+
 
   # def id_scraping
   #   browser = Ferrum::Browser.new(timeout: 120)
@@ -63,4 +66,5 @@ class CompetitorsController < ApplicationController
   #   @competitor.siret = key_figures
 
   # end
+
 end
