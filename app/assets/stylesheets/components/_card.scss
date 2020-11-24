@@ -10,18 +10,26 @@
   height: 120px;
   display: flex;
   align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+.card-product span {
+  position: absolute;
+  color: white;
+  border-radius: 50%;
+  top: 0px;
+  right: 0px;
 }
 
 .card-product img {
   height: 100%;
   width: 120px;
   object-fit: cover;
-  padding-bottom: 10px;
-  border-radius: 50%;
 }
 
 .card-product h2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
   z-index: 0;
