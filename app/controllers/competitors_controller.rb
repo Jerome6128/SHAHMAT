@@ -21,7 +21,11 @@ class CompetitorsController < ApplicationController
     @competitor.brand_name = results[:brand_name]
     @competitor.address = results[:address]
     @competitor.naf = results[:naf]
-    @competitor.siret = results[:key_figures]
+    results[:key_figures].each do |key_figure|
+      @key_figure = KeyFigure.new(key_figure)
+      @key_figure.competitor = @competitor
+      @key_figure.save
+    end
     if @competitor.save
       redirect_to competitor_path(@competitor)
     else
