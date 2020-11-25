@@ -53,7 +53,6 @@ class CompetitorsController < ApplicationController
       @job_offer.competitor = @competitor
       @job_offer.save
     end
-    raise
     redirect_to competitor_path(@competitor)
   end
 
