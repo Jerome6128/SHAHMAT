@@ -2,9 +2,17 @@
   display: flex;
 }
 
-.container h2 {
+.container form {
   position: sticky;
-  top: 20px;
+  top: 0px;
+  padding-top: 20px;
   z-index: 2;
   background-color: #F4F4F4;
+  display: flex;
+}
+
+.container form #query {
+  border-radius: 20px;
+  width: 300px;
+  margin-bottom: 10px;
 }

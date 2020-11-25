@@ -1,3 +1,14 @@
+
+<div class="flex-container">
+  <%= render "shared/sidebar" %>
+    <div class="container container-top-band sidebar-margin pl-4 mt-3 d-flex">        
+      <div class="logo mr-3">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      </div>
+      <div>
+        <h1><%= @competitor.brand_name %></h1>
+      </div>
+
 <div class="container">
   <h1>Competitor's information</h1>
   <div class="row">
@@ -39,6 +50,6 @@
           <% end %>
         </tbody>
       </table>
+
     </div>
-  </div>
 </div>
