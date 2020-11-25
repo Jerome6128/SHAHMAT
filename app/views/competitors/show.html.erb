@@ -1,3 +1,16 @@
+
+<div class="flex-container">
+  <%= render "shared/sidebar" %>
+    <div class="container container-top-band sidebar-margin pl-4 mt-3 d-flex">
+      <div class="logo mr-3">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      </div>
+      <div>
+        <h1><%= @competitor.brand_name %></h1>
+      </div>
+    </div>
+</div>
+
 <div class="container">
   <h1>Competitor's information</h1>
   <div class="row">
@@ -6,13 +19,13 @@
       <h3>General information</h1>
       <hr>
       <ul>
-        <li><strong>Name: </strong><%= @competitor.brand_name %></li>
-        <li><strong>Address: </strong><%= @competitor.address %></li>
-        <li><strong>Website: </strong><%= @competitor.website %></li>
-        <li><strong>SIREN: </strong><%= @competitor.siren %></li>
-        <li><strong>RCS: </strong><%= @competitor.rcs %></li>
-        <li><strong>SIRET: </strong><%= @competitor.siret %></li>
-        <li><strong>NAF: </strong><%= @competitor.naf %></li>
+        <li>Name: <%= @competitor.brand_name %></li>
+        <li>Address: <%= @competitor.address %></li>
+        <li>Website: <%= @competitor.website %></li>
+        <li>SIREN: <%= @competitor.siren %></li>
+        <li>RCS: <%= @competitor.rcs %></li>
+        <li>SIRET: <%= @competitor.siret %></li>
+        <li>NAF: <%= @competitor.naf %></li>
       </ul>
     </div>
 
@@ -40,5 +53,4 @@
         </tbody>
       </table>
     </div>
-  </div>
 </div>
