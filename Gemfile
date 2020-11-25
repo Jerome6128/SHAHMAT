@@ -38,6 +38,8 @@ gem 'pg_search', '~> 2.3.0'
 
 gem 'httparty'
 gem 'ferrum'
+gem 'open-uri'
+gem 'dotenv-rails', groups: [:development, :test]
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

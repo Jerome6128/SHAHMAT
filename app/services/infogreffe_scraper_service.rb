@@ -4,22 +4,23 @@ class InfogreffeScraperService
   end
 
   def scrape
+    # retriev informatiton from infogreffe
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.infogreffe.com/entreprise-societe/#{@siren}"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
-    #retrieve the name of the company
+    # retrieve the name of the company
     element = html_doc.search('//*[@id="identification"]/h1').text.split(" ")
     brand_name = element.take(element.index("Partager")).join(" ")
 
-    #retrieve the address of the company
+    # retrieve the address of the company
     element = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[1]/div[1]').text.split(" ")
     address = element.drop(element.index("-") + 1).join(" ")
 
-    #retrieve the naf code of the company
+    # retrieve the naf code of the company
     naf = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/p[1]').text
 
-    #retrieve the key figures of the company
+    # retrieve the key figures of the company
     key_figures = []
     html_doc.search('//*[@id="chiffresCles"]/tbody/tr').each do |row|
       year = []
@@ -33,6 +34,23 @@ class InfogreffeScraperService
         workforce: year[3]
       }
     end
+    # retrieve information form Linkedin
+    # browser = Ferrum::Browser.new(timeout: 120)
+    # browser.cookies.set(name: "li_at", value: "AQEDATNdIgUAe_AjAAABdgABqPMAAAF2JA4s800AAMIjJHsB8ZR2lPvSnI-bWiY53hXNc58va8lrzrb7-oqC3xKydKR8fxxYk-DV1TJzfJg5a2Itt1ftUPrKKJf5cd9za5jp25Mj_FhgQil2U2xivIPI", domain: "linkedin.com")
+    # url = "https://fr.linkedin.com/company/#{brand_name}"
+    # browser.goto(url)
+    # html_doc = Nokogiri::HTML(browser.body)
+    # logo_url = html_doc.search('/html/body/main/section[1]/section[1]/div/img').attribute("src").value
+    # file = URI.open(logo_url)
+
+    # retrieve information form Linkedin
+    browser = Ferrum::Browser.new(timeout: 120)
+    url = "https://www.google.com/search?q=#{brand_name}+logo&tbm=isch"
+    browser.goto(url)
+    html_doc = Nokogiri::HTML(browser.body)
+    logo_url = html_doc.search('/html/body/div[2]/c-wiz/div[3]/div[1]/div/div/div/div/div[1]/div[1]/div[1]/a[1]')
+    file = URI.open(logo_url)
+    raise
 
     { brand_name: brand_name, address: address, naf: naf, key_figures: key_figures }
   end
