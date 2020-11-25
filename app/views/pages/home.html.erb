@@ -1,3 +1,48 @@
 <%= render 'shared/navbar' %>
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<header>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="<%= image_url("chessFullHD.mp4")%>" type="video/mp4">
+  </video>
+  <div class="container d-flex align-items-center h-100 w-100">
+    <div class="text-white">
+      <h1 class="my-3">Stay in control of the game,</h1> 
+      <h1 class="my-3">always be one step ahead!</h1>
+      <p class="my-3">Shahmat will make you play like a Grandmaster!</p>
+      <a href="#" class="my-3 btn btn-outline-light">Try for free!</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <h2 class="text-center m-5">Bring the signal out of the noise !</h2>
+  <p class="my-3 text-justify"> Nowadays, information is everywhere, about everything and everyone. It diffuses, amplifies, deforms as it spreads. And the relevant information, the information you seek, ends up being drowned in the mass. Of course, it is available to anyone who takes the time to look for it, but time, on the contrary, is scarce and limited.</p>
+  <p class="my-3 text-justify">SHAHMAT helps you to get the strong signal out of this ambient noise.</p>
+  <div class="cards my-5 d-flex justify-content-around text-center">
+    <div class="card" style="width: 18rem;">
+      <%= image_tag("competitorlist.jpg") %>
+      <div class="card-body">
+        <h5 class="card-title">Build your own list of competitors</h5>
+        <p class="card-text">Select the competitors you want to follow and add them to your dashboard.</p>
+      </div>
+    </div>
+    <div class="card mx-4" style="width: 18rem;">
+      <%= image_tag("click.jpg") %>
+      <div class="card-body">
+        <h5 class="card-title">Get information about a new competitor in one click</h5>
+        <p class="card-text">Choose the competitor you want to follow, then click! Shahmat automatically searches the information for you.</p>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <%= image_tag("notif") %>
+      <div class="card-body">
+        <h5 class="card-title">Be immediately notified of any changes </h5>
+        <p class="card-text">At a glance, see the update notifications in your dashboard.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
