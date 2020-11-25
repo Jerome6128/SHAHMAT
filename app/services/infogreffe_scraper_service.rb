@@ -53,11 +53,8 @@ class InfogreffeScraperService
     img_from_base64 = Base64.decode64(base64_image)
     filetype = /(png|jpg|jpeg|gif|PNG|JPG|JPEG|GIF)/.match(img_from_base64[0,16])[0]
     filename = brand_name
-    file = filename << '.' << filetype
+    file = "#{filename}.#{filetype}"
     File.open(file, 'wb') { |f| f.write(img_from_base64) }
-    # Cloudinary::Uploader.upload(file)
-
-    # raise
     competitor.photo.attach(io: URI.open(file), filename: filename, content_type: "image/#{filetype}")
 
     { brand_name: brand_name, address: address, naf: naf, key_figures: key_figures }
