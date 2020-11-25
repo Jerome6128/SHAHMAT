@@ -1,1 +1,42 @@
-_id_card.html.erb
+<div class="container">
+  <h1>Competitor ID card</h1>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <hr>
+      <h3>General information</h3>
+      <hr>
+      <ul>
+        <li>Name: <%= @competitor.brand_name %></li>
+        <li>Address: <%= @competitor.address %></li>
+        <li>Website: <%= @competitor.website %></li>
+        <li>SIREN: <%= @competitor.siren %></li>
+        <li>RCS: <%= @competitor.rcs %></li>
+        <li>SIRET: <%= @competitor.siret %></li>
+        <li>NAF: <%= @competitor.naf %></li>
+      </ul>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <hr>
+      <h3>Key Figures</h3>
+      <hr>
+      <table class="table table-striped">
+        <tbody>
+          <thead class="text-white bg-success">
+            <th>Close</th>
+            <th>Turnover</th>
+            <th>Profit</th>
+            <th>Workforce</th>
+          </thead>
+          <% @competitor.key_figures.each do |key_figure| %>
+          <tr>
+            <td><%= key_figure.close %></td>
+            <td><%= key_figure.turnover %></td>
+            <td><%= key_figure.profit %> </td>
+            <td><%= key_figure.workforce %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,13 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <%= simple_form_for(@competitor) do |f| %>
-        <%= f.input :siren %>
-        <%= f.button :submit, class: "btn btn-success text-white" %>
-      <% end %>
+<div class="flex-container">
+  <%= render "shared/sidebar" %>  
+  <div class="container container-top-band sidebar-margin pl-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <%= simple_form_for(@competitor) do |f| %>
+          <%= f.input :siren %>
+          <%= f.button :submit, class: "btn btn-success text-white" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
