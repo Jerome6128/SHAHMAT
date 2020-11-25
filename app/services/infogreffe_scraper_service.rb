@@ -3,7 +3,7 @@ class InfogreffeScraperService
     @siren = siren
   end
 
-  def scrape
+  def scrape(competitor)
     # retriev informatiton from infogreffe
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.infogreffe.com/entreprise-societe/#{@siren}"
@@ -34,7 +34,7 @@ class InfogreffeScraperService
         workforce: year[3]
       }
     end
-    # retrieve information form Linkedin
+    # retrieve information from Linkedin
     # browser = Ferrum::Browser.new(timeout: 120)
     # browser.cookies.set(name: "li_at", value: "AQEDATNdIgUAe_AjAAABdgABqPMAAAF2JA4s800AAMIjJHsB8ZR2lPvSnI-bWiY53hXNc58va8lrzrb7-oqC3xKydKR8fxxYk-DV1TJzfJg5a2Itt1ftUPrKKJf5cd9za5jp25Mj_FhgQil2U2xivIPI", domain: "linkedin.com")
     # url = "https://fr.linkedin.com/company/#{brand_name}"
@@ -43,14 +43,22 @@ class InfogreffeScraperService
     # logo_url = html_doc.search('/html/body/main/section[1]/section[1]/div/img').attribute("src").value
     # file = URI.open(logo_url)
 
-    # retrieve information form Linkedin
+    # retrieve logo from Google
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.google.com/search?q=#{brand_name}+logo&tbm=isch"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
-    logo_url = html_doc.search('/html/body/div[2]/c-wiz/div[3]/div[1]/div/div/div/div/div[1]/div[1]/div[1]/a[1]')
-    file = URI.open(logo_url)
-    raise
+    logo_data = html_doc.search('//*[@id="islrg"]/div[1]/div[1]/a[1]/div[1]/img').attribute('src').value
+    base64_image = logo_data.split(",")[1]
+    img_from_base64 = Base64.decode64(base64_image)
+    filetype = /(png|jpg|jpeg|gif|PNG|JPG|JPEG|GIF)/.match(img_from_base64[0,16])[0]
+    filename = brand_name
+    file = filename << '.' << filetype
+    File.open(file, 'wb') { |f| f.write(img_from_base64) }
+    # Cloudinary::Uploader.upload(file)
+
+    # raise
+    competitor.photo.attach(io: URI.open(file), filename: filename, content_type: "image/#{filetype}")
 
     { brand_name: brand_name, address: address, naf: naf, key_figures: key_figures }
   end
