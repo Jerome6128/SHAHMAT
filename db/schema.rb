@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_175611) do
+ActiveRecord::Schema.define(version: 2020_11_26_155245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 2020_11_25_175611) do
 
   create_table "competitors", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "brand_name"
-    t.string "address"
-    t.string "website"
-    t.string "siren"
-    t.string "rcs"
-    t.string "siret"
-    t.string "naf"
+    t.string "brand_name", default: "NA"
+    t.string "address", default: "NA"
+    t.string "website", default: "NA"
+    t.string "siren", default: "NA"
+    t.string "rcs", default: "NA"
+    t.string "siret", default: "NA"
+    t.string "naf", default: "NA"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_competitors_on_user_id"
@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 2020_11_25_175611) do
   end
 
   create_table "key_figures", force: :cascade do |t|
-    t.string "close"
-    t.string "turnover"
-    t.string "profit"
-    t.string "workforce"
+    t.string "close", default: "NA"
+    t.string "turnover", default: "NA"
+    t.string "profit", default: "NA"
+    t.string "workforce", default: "NA"
     t.bigint "competitor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
