@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_25_175611) do
-=======
-ActiveRecord::Schema.define(version: 2020_11_25_145121) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,11 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_145121) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "source"
-<<<<<<< HEAD
-    t.string "url"
-=======
     t.string "job_url"
->>>>>>> master
     t.index ["competitor_id"], name: "index_job_offers_on_competitor_id"
   end
 
