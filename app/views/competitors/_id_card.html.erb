@@ -1,8 +1,12 @@
 
 <div class="container <%= "hidden" unless params[:section] == "ID" %>">
   <div class="row align-items-center justify-content-around">
-    <div class="col-sm-12 col-md-6">
-      <%= cl_image_tag @competitor.photo.key %>
+    <div class="logo-show col-sm-12 col-md-6">
+      <% if @competitor.photo.attached? %>
+        <%= cl_image_tag @competitor.photo.key %>
+      <% else %>
+        <%= image_tag "logo-not-found.jpg" %>
+      <% end %>
     </div>
     <div class="col-sm-12 col-md-6">
       <h1><%= @competitor.brand_name %></h1>

@@ -2,4 +2,11 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-show img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }

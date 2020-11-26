@@ -19,7 +19,11 @@
         <% @competitors.each do |competitor| %>
           <%= link_to competitor_path(competitor) do %>
             <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <% if competitor.photo.attached? %>
+                <%= cl_image_tag competitor.photo.key %>
+              <% else %>
+                  <%= image_tag "logo-not-found.jpg" %>
+              <% end %>
               <span class="badge badge-success"><i class="fas fa-bell"></i></span>
               <div class="card-product-infos">
                 <h2><%= competitor.brand_name %></h2>
