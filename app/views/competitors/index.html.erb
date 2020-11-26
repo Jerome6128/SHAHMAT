@@ -1,8 +1,8 @@
 
 <div class="flex-container">
-  <%= render "shared/sidebar" %>  
-  
-  <div class="container container-top-band sidebar-margin pl-4">
+  <%= render "shared/sidebar" %>
+
+  <div class="container-search container-top-band sidebar-margin pl-4">
     <%= form_tag competitors_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -30,7 +30,7 @@
               </div>
             </div>
           <% end %>
-        <% end %>      
+        <% end %>
       </div>
     <% end %>
   </div>
