@@ -26,10 +26,10 @@
 }
 
 .highlight {
-  border: outset;
+  border: outset thin;
   width: 180px;
-  border-bottom-right-radius: 20px;
-  border-color: #F4F4F4;
+  border-radius: 10px;
+  border-color: #ced4da;
 }
 
 .sidebar-section img {
