@@ -39,13 +39,14 @@ class CompetitorsController < ApplicationController
     end
     if @competitor.save
       redirect_to competitor_path(@competitor)
+      update
     else
       render 'new'
     end
   end
 
   def update
-    @competitor = Competitor.find(params[:id])
+    # @competitor = Competitor.find(params[:id])
     @job_search = WttjScraperService.new(@competitor.brand_name)
     @jobs_result = @job_search.scrape
     @jobs_result.each do |job|
@@ -53,7 +54,7 @@ class CompetitorsController < ApplicationController
       @job_offer.competitor = @competitor
       @job_offer.save
     end
-    redirect_to competitor_path(@competitor)
+    # redirect_to competitor_path(@competitor)
   end
 
   private
