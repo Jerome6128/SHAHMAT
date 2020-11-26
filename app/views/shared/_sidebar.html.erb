@@ -18,11 +18,11 @@
     <p class="<%= "highlight" if params[:action] == "new" %> pl-2 py-2"><i class="fas fa-user-edit"></i> <%= link_to "Add a competitor", new_competitor_path %></p>
     <% if @competitor && !(@competitor.id.nil?) %>
       <div class="link-text-sidebar">
-        <div class="sidebar-section highlight pl-2">
+        <div class=" d-flex-justify-content sidebar-section highlight">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <%= @competitor.brand_name %>
         </div>
-        <div>
+        <div class="section">
           <%= link_to "ID section", competitor_path(@competitor, :section => "ID" ) %>
           <%= link_to "HR section", competitor_path(@competitor, :section => "HR" ) %>
           <%= link_to "Financial section", competitor_path(@competitor, :section => "Financial" ) %>
@@ -36,5 +36,3 @@
     <% end %>
   </div>
 </div>
-
-<%= "hidden" unless params[:section] == "HR" %>
