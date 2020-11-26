@@ -24,7 +24,9 @@
               <% else %>
                   <%= image_tag "logo-not-found.jpg" %>
               <% end %>
-              <span class="badge badge-success"><i class="fas fa-bell"></i></span>
+              <% if competitor.today? %>
+                <span class="badge badge-success"><i class="fas fa-bell"></i></span>
+              <% end %>
               <div class="card-product-infos">
                 <h2><%= competitor.brand_name %></h2>
               </div>
