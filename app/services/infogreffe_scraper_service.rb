@@ -56,7 +56,7 @@ class InfogreffeScraperService
     file = "#{filename}.#{filetype}"
     File.open(file, 'wb') { |f| f.write(img_from_base64) }
     competitor.photo.attach(io: URI.open(file), filename: filename, content_type: "image/#{filetype}")
-
+    File.delete(file)
     { brand_name: brand_name, address: address, naf: naf, key_figures: key_figures }
   end
 end

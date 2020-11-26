@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container <%= "hidden" unless params[:section] == "HR" %>">
   <div class="row">
     <% @competitor.job_offers.each do |job_offer| %>
       <div class="jobcard col-6 col-md-4 m-1">
