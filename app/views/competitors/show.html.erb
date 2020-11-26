@@ -10,7 +10,6 @@
         <h1><%= @competitor.brand_name %></h1>
       </div>
     </div>
-    <%= link_to "scrap", competitor_path(@competitor), method: :patch  %>
     <%= render "competitors/id_card", competitor: @competitor%>
     <%= render "competitors/hr", competitor: @competitor%>
   </div>
