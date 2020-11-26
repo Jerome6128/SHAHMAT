@@ -11,4 +11,8 @@ class Competitor < ApplicationRecord
 
   has_many :key_figures
   has_many :job_offers
+  
+  def today?
+    created_at.to_date == Date.today
+  end
 end
