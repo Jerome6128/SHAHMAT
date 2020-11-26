@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <% @competitor.job_offers.each do |job_offer| %>
+      <div class="jobcard col-6 col-md-4 m-1">
+        <div class="jobcard-infos">
+          <h2><%= job_offer.title %></h2>
+          <p><%= job_offer.location %></p>
+          <p>posted : <%= job_offer.posting_date %> on <%= job_offer.source %></p>
+        </div>
+        <%= link_to "", job_offer.job_url, target: :_blank%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

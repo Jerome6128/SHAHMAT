@@ -2,16 +2,10 @@
 <div class="flex-container">
   <%= render "shared/sidebar" %>
   <div class="container container-top-band sidebar-margin pl-4 mt-3 d-flex">
-<!--     <div class="logo mr-3">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    </div>
-
-    <div>
-      <h1><%= @competitor.brand_name %></h1>
-    </div> -->
     <%= render "competitors/id_card", competitor: @competitor%>
+    <%= render "competitors/hr", competitor: @competitor%>
   </div>
-
 </div>
+
 
 
