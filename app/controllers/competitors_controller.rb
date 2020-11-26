@@ -28,7 +28,7 @@ class CompetitorsController < ApplicationController
     @competitor = Competitor.new(competitor_params)
     @competitor.user = current_user
     search = InfogreffeScraperService.new(@competitor.siren)
-    results = search.scrape
+    results = search.scrape(@competitor)
     @competitor.brand_name = results[:brand_name]
     @competitor.address = results[:address]
     @competitor.naf = results[:naf]
@@ -37,6 +37,7 @@ class CompetitorsController < ApplicationController
       @key_figure.competitor = @competitor
       @key_figure.save
     end
+
     if @competitor.save
       redirect_to competitor_path(@competitor)
       update
