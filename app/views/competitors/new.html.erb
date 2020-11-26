@@ -1,13 +1,13 @@
 <div class="flex-container">
-  <%= render "shared/sidebar" %>  
-  <div class="container container-top-band sidebar-margin pl-4">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <%= simple_form_for(@competitor) do |f| %>
-          <%= f.input :siren %>
-          <%= f.button :submit, class: "btn btn-success text-white" %>
-        <% end %>
-      </div>
+  <%= render "shared/sidebar" %>
+  <div class="container text-center pt-5 w-500 container-top-band
+  sidebar-margin">
+    <h4>Just give us the <em>siren</em> of your competitor and Shahmat will fetch the rest</h2>
+    <div class="form-style">
+      <%= simple_form_for(@competitor) do |f| %>
+        <%= f.input :siren, required: true  %>
+        <%= f.button :submit %>
+      <% end %>
     </div>
   </div>
 </div>

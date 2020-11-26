@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.container form {
+.container-search form {
   position: sticky;
   top: 0px;
   padding-top: 20px;
@@ -11,8 +11,8 @@
   display: flex;
 }
 
-.container form #query {
-  border-radius: 20px;
-  width: 300px;
+.container-search form #query {
+  width: 350px;
   margin-bottom: 10px;
+  height: 40px;
 }
