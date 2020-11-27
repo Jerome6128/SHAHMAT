@@ -1,4 +1,29 @@
 <div class="container <%= "hidden" unless params[:section] == "HR" %>">
+  <hr>
+  <h3 class="mb-3 text-center"> Recruitement informations</h3>
+  <hr>
+  <div class="row"></div>
+  <table class="table table-striped col-6">
+   <table class="table table-striped col-6">
+    <tbody>
+        <thead class="text-white bg-success">
+          <th> Job offers </th>
+          <th>This month</th>
+          <th>This week</th>
+          <th>Source</th>
+        </thead>
+        <tr>
+          <td><%=  %></td>
+          <td><%=  %></td>
+          <td><%=  %> </td>
+          <td><%= %></td>
+        </tr>
+      </tbody>
+    </table>
+  <hr>
+  <h3 class="text-center"> Last job offers</h3>
+  <hr>
+  <br>
   <div class="row">
     <% @competitor.job_offers.each do |job_offer| %>
       <div class="jobcard col-6 col-md-4 m-1">
