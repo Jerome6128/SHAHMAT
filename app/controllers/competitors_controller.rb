@@ -29,7 +29,8 @@ class CompetitorsController < ApplicationController
     @competitor.user = current_user
     @competitor.save
     IdscraperJob.perform_later(@competitor)
-    flash[:notice] = "ID scraping is done"
+    JobscraperJob.perform_later(@competitor)
+    flash[:notice] = "Collecting information..."
     if @competitor.save
       redirect_to competitor_path(@competitor)
       # update
@@ -40,13 +41,13 @@ class CompetitorsController < ApplicationController
 
   def update
     # @competitor = Competitor.find(params[:id])
-    @job_search = WttjScraperService.new(@competitor.brand_name)
-    @jobs_result = @job_search.scrape
-    @jobs_result.each do |job|
-      @job_offer = JobOffer.new(job)
-      @job_offer.competitor = @competitor
-      @job_offer.save
-    end
+    # @job_search = WttjScraperService.new(@competitor.brand_name)
+    # @jobs_result = @job_search.scrape
+    # @jobs_result.each do |job|
+    #   @job_offer = JobOffer.new(job)
+    #   @job_offer.competitor = @competitor
+    # #   @job_offer.save
+    # end
     # redirect_to competitor_path(@competitor)
   end
 
