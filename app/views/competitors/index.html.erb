@@ -17,7 +17,7 @@
     <% else %>
       <div class="cards link-text">
         <% @competitors.each do |competitor| %>
-          <%= link_to competitor_path(competitor) do %>
+          <%= link_to competitor_path(competitor, section: "ID") do %>
             <div class="card-product">
               <% if competitor.photo.attached? %>
                 <%= cl_image_tag competitor.photo.key %>
