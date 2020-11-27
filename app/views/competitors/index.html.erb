@@ -20,7 +20,7 @@
           <%= link_to competitor_path(competitor) do %>
             <div class="card-product">
               <% if competitor.photo.attached? %>
-                <%= cl_image_tag competitor.photo.key %>
+                <%= cl_image_tag(competitor.photo.key, :width=>150, :height=>120, :crop=>"pad")%>
               <% else %>
                   <%= image_tag "logo-not-found.jpg" %>
               <% end %>

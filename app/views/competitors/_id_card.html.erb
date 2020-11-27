@@ -1,9 +1,9 @@
 
 <div class="container <%= "hidden" unless params[:section] == "ID" %>">
-  <div class="row align-items-center justify-content-around">
+  <div class="row align-items-center">
     <div class="col-sm-12 col-md-6">
       <% if @competitor.photo.attached? %>
-        <%= cl_image_tag @competitor.photo.key, class: "competitor-logo" %>
+        <%= cl_image_tag @competitor.photo.key %>
       <% else %>
         <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
       <% end %>
@@ -14,14 +14,14 @@
       <hr>
       <h3>General information</h3>
       <hr>
-      <ul>
-        <li>Name: <%= @competitor.brand_name %></li>
-        <li>Address: <%= @competitor.address %></li>
-        <li>Website: <%= @competitor.website %></li>
-        <li>SIREN: <%= @competitor.siren %></li>
-        <li>RCS: <%= @competitor.rcs %></li>
-        <li>SIRET: <%= @competitor.siret %></li>
-        <li>NAF: <%= @competitor.naf %></li>
+      <ul class="list-unstyled bg-white p-2">
+        <li class="p-1"><strong>Name: </strong><%= @competitor.brand_name %></li>
+        <li class="p-1"><strong>Address: </strong> <%= @competitor.address %></li>
+        <li class="p-1"><strong>Website: </strong> <%= @competitor.website %></li>
+        <li class="p-1"><strong>SIREN: </strong> <%= @competitor.siren %></li>
+        <li class="p-1"><strong>RCS: </strong> <%= @competitor.rcs %></li>
+        <li class="p-1"><strong>SIRET: </strong> <%= @competitor.siret %></li>
+        <li class="p-1"><strong>NAF: </strong> <%= @competitor.naf %></li>
       </ul>
     </div>
     <div class="col-sm-12 col-md-6">
