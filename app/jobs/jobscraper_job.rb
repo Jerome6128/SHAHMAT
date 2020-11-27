@@ -28,26 +28,26 @@ class JobscraperJob < ApplicationJob
     end
   end
 
-  def perform(competitor)
+  def perform(competitor_id)
+    competitor = Competitor.find(competitor_id)
     browser = Ferrum::Browser.new(timeout: 60)
     url = "https://www.welcometothejungle.com/fr/companies/#{competitor.brand_name.parameterize}/jobs"
     browser.goto(url)
     browser.mouse.scroll_to(0, 400)
-
+    p competitor.brand_name
     ## wait until full loading of the webpage
     loop do
       break if browser.evaluate("document.readyState") == "complete"
     end
 
     html_doc = Nokogiri::HTML(browser.body)
-    p html_doc
+    # p html_doc
     jobs = []
     html_doc.search(".sc-1flb27e-5").each do |element|
       infos_array = []
       job = {
         source: "WTTJ"
       }
-
       element.search("h3").each do |title|
         job[:title] = title.content
       end

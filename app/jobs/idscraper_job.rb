@@ -1,7 +1,8 @@
 class IdscraperJob < ApplicationJob
   queue_as :default
 
-  def perform(competitor)
+  def perform(competitor_id)
+    competitor = Competitor.find(competitor_id)
     # retriev informatiton from infogreffe
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.infogreffe.com/entreprise-societe/#{competitor.siren}"
@@ -30,6 +31,9 @@ class IdscraperJob < ApplicationJob
       key_figure.competitor = competitor
       key_figure.save
     end
+    competitor.save
+    competitor.reload
+    p competitor
     # retrieve logo from Google
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.google.com/search?q=#{competitor.brand_name}+logo&tbm=isch"
@@ -43,7 +47,8 @@ class IdscraperJob < ApplicationJob
     file = "#{filename}.#{filetype}"
     File.open(file, 'wb') { |f| f.write(img_from_base64) }
     competitor.photo.attach(io: URI.open(file), filename: filename, content_type: "image/#{filetype}")
-    File.delete(file)
     competitor.save
+    File.delete(file)
+    JobscraperJob.perform_later(competitor.id)
   end
 end
