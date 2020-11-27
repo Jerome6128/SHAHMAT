@@ -27,11 +27,9 @@ class CompetitorsController < ApplicationController
   def create
     @competitor = Competitor.new(competitor_params)
     @competitor.user = current_user
-    @competitor.save
-    IdscraperJob.perform_later(@competitor)
-    JobscraperJob.perform_later(@competitor)
-    flash[:notice] = "Collecting information..."
     if @competitor.save
+      flash[:notice] = "Collecting information..."
+      IdscraperJob.perform_later(@competitor.id)
       redirect_to competitor_path(@competitor)
       # update
     else
