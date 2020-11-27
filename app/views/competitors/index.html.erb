@@ -1,8 +1,8 @@
 
 <div class="flex-container">
-  <%= render "shared/sidebar" %>  
-  
-  <div class="container container-top-band sidebar-margin pl-4">
+  <%= render "shared/sidebar" %>
+
+  <div class="container-search container-top-band sidebar-margin pl-4">
     <%= form_tag competitors_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -19,14 +19,20 @@
         <% @competitors.each do |competitor| %>
           <%= link_to competitor_path(competitor) do %>
             <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <span class="badge badge-success"><i class="fas fa-bell"></i></span>
+              <% if competitor.photo.attached? %>
+                <%= cl_image_tag competitor.photo.key %>
+              <% else %>
+                  <%= image_tag "logo-not-found.jpg" %>
+              <% end %>
+              <% if competitor.today? %>
+                <span class="badge badge-success"><i class="fas fa-bell"></i></span>
+              <% end %>
               <div class="card-product-infos">
                 <h2><%= competitor.brand_name %></h2>
               </div>
             </div>
           <% end %>
-        <% end %>      
+        <% end %>
       </div>
     <% end %>
   </div>

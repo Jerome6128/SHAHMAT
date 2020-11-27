@@ -2,4 +2,11 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.competitor-logo {
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
 }
