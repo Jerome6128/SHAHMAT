@@ -1,9 +1,8 @@
-class IdscraperJob < ApplicationJob
+class InfogreffeJob < ApplicationJob
   queue_as :default
 
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
-    # retriev informatiton from infogreffe
     browser = Ferrum::Browser.new(timeout: 120)
     url = "https://www.infogreffe.com/entreprise-societe/#{competitor.siren}"
     browser.goto(url)
@@ -14,8 +13,17 @@ class IdscraperJob < ApplicationJob
     # retrieve the address of the company
     element = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[1]/div[1]').text.split(" ")
     competitor.address = element.drop(element.index("-") + 1).join(" ")
+    # retrieve the SIRET code of the company
+    competitor.siret = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[1]/div[2]/text()').text
     # retrieve the naf code of the company
     competitor.naf = html_doc.search('//*[@id="showHideContent"]/div[1]/div[2]/table/tbody/tr/td[2]/div[1]/p[1]').text
+    # retrieve the rcs code of the company
+    competitor.rcs = html_doc.search('/html/body/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div/div/div/div[3]/div/div[1]/div[2]/table/tbody/tr/td[2]/div[2]/div[1]/p/text()').text
+    # retrieve the trading name of the company
+    competitor.trading_name = html_doc.search('/html/body/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div/div/div/div[3]/div/div[1]/div[2]/table/tbody/tr/td[1]/div[4]/text()').text.strip
+    competitor.trading_name = competitor.brand_name if competitor.trading_name == "null"
+    # retrieve the legal form of the company
+    competitor.legal_form = html_doc.search('/html/body/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div/div/div/div[3]/div/div[1]/div[2]/table/tbody/tr/td[1]/div[7]/p').text
     # retrieve the key figures of the company
     html_doc.search('//*[@id="chiffresCles"]/tbody/tr').each do |row|
       year = []
@@ -33,22 +41,6 @@ class IdscraperJob < ApplicationJob
     end
     competitor.save
     competitor.reload
-    p competitor
-    # retrieve logo from Google
-    browser = Ferrum::Browser.new(timeout: 120)
-    url = "https://www.google.com/search?q=#{competitor.brand_name}+logo&tbm=isch"
-    browser.goto(url)
-    html_doc = Nokogiri::HTML(browser.body)
-    logo_data = html_doc.search('//*[@id="islrg"]/div[1]/div[1]/a[1]/div[1]/img').attribute('src').value
-    base64_image = logo_data.split(",")[1]
-    img_from_base64 = Base64.decode64(base64_image)
-    filetype = /(png|jpg|jpeg|gif|PNG|JPG|JPEG|GIF)/.match(img_from_base64[0,16])[0]
-    filename = competitor.brand_name
-    file = "#{filename}.#{filetype}"
-    File.open(file, 'wb') { |f| f.write(img_from_base64) }
-    competitor.photo.attach(io: URI.open(file), filename: filename, content_type: "image/#{filetype}")
-    competitor.save
-    File.delete(file)
-    JobscraperJob.perform_later(competitor.id)
+    SocietecomJob.perform_later(competitor.id)
   end
 end

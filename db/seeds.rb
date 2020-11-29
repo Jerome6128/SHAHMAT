@@ -23,7 +23,7 @@ siren = [
   "814428785",
   "839793791",
   "822183711",
-  "817618051"
+  "817618051",
   "798098430",
   "832146237",
   "835143751",
@@ -41,6 +41,6 @@ siren.each do |siren|
   competitor = Competitor.new(siren: siren)
   competitor.user  = User.find_by(name: "jerome")
   competitor.save
-  IdscraperJob.perform_later(competitor.id)
+  InfogreffeJob.perform_later(competitor.id)
 end
 

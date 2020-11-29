@@ -10,42 +10,29 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-12">
       <hr>
-      <h3>General information</h3>
+      <h3>Legal information</h3>
       <hr>
-      <ul class="list-unstyled bg-white p-2">
-        <li class="p-1"><strong>Name: </strong><%= @competitor.brand_name %></li>
-        <li class="p-1"><strong>Address: </strong> <%= @competitor.address %></li>
-        <li class="p-1"><strong>Website: </strong> <%= @competitor.website %></li>
-        <li class="p-1"><strong>SIREN: </strong> <%= @competitor.siren %></li>
-        <li class="p-1"><strong>RCS: </strong> <%= @competitor.rcs %></li>
-        <li class="p-1"><strong>SIRET: </strong> <%= @competitor.siret %></li>
-        <li class="p-1"><strong>NAF: </strong> <%= @competitor.naf %></li>
-      </ul>
-    </div>
-    <div class="col-sm-12 col-md-6">
-      <hr>
-      <h3>Key Figures</h3>
-      <hr>
-      <table class="table table-striped">
-        <tbody>
-          <thead class="text-white bg-success">
-            <th>Close</th>
-            <th>Turnover</th>
-            <th>Profit</th>
-            <th>Workforce</th>
-          </thead>
-          <% @competitor.key_figures.each do |key_figure| %>
-          <tr>
-            <td><%= key_figure.close %></td>
-            <td><%= key_figure.turnover %></td>
-            <td><%= key_figure.profit %> </td>
-            <td><%= key_figure.workforce %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="bg-white p-2 my-4">
+        <h5 class="pb-2"><strong>Summary:</strong></h5>
+        <p class="pl-5"><%= @competitor.summary %></p>
+      </div>
+
+      <div  class="bg-white p-2 my-4">
+        <h5 class="pb-2"><strong>Legal details:</strong></h5>
+        <ul class="pl-5 list-unstyled">
+          <li><strong>Registration name: </strong><%= @competitor.brand_name %></li>
+          <li><strong>Trading name: </strong><%= @competitor.trading_name %></li>
+          <li><strong>Address: </strong> <%= @competitor.address %></li>
+          <li><strong>Website: </strong> <%= @competitor.website %></li>
+          <li><strong>SIREN: </strong> <%= @competitor.siren %></li>
+          <li><strong>RCS: </strong> <%= @competitor.rcs %></li>
+          <li><strong>SIRET: </strong> <%= @competitor.siret %></li>
+          <li><strong>NAF: </strong> <%= @competitor.naf %></li>
+          <li><strong>Legal form: </strong><%= @competitor.legal_form %></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -19,11 +19,12 @@
     <% if @competitor && !(@competitor.id.nil?) %>
       <div class="link-text-sidebar">
         <div class="d-flex-justify-content sidebar-section highlight py-2 pl-4">
-          <%= @competitor.brand_name %>
+          <%= @competitor.trading_name %>
         </div>
         <div class="section">
-          <%= link_to "ID Card", competitor_path(@competitor, :section => "ID" ) %>
+          <%= link_to "Legal information", competitor_path(@competitor, :section => "ID" ) %>
           <%= link_to "Human Ressources", competitor_path(@competitor, :section => "HR" ) %>
+          <%= link_to "Key Figures", competitor_path(@competitor, :section => "Key Figures" ) %>
           <%= link_to "Financial", competitor_path(@competitor, :section => "Financial" ) %>
         </div>
       </div>

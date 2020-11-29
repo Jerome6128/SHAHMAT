@@ -34,7 +34,7 @@ class JobscraperJob < ApplicationJob
     url = "https://www.welcometothejungle.com/fr/companies/#{competitor.brand_name.parameterize}/jobs"
     browser.goto(url)
     browser.mouse.scroll_to(0, 400)
-    p competitor.brand_name
+    # p competitor.brand_name
     ## wait until full loading of the webpage
     loop do
       break if browser.evaluate("document.readyState") == "complete"
@@ -60,7 +60,7 @@ class JobscraperJob < ApplicationJob
         infos_array << info.content
       end
       job[:location] = infos_array[1]
-      p infos_array[2]
+      # p infos_array[2]
       date = posting_date_into_date(infos_array[2])
 
       if date.respond_to?(:strftime)
