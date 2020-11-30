@@ -8,6 +8,7 @@ const initCompetitorCable = () => {
     consumer.subscriptions.create({ channel: "CompetitorChannel", id: id }, {
       received(data) {
         console.log(data); // called when data is broadcast in the cable
+        resultsContainer.innerHTML = data ;
       },
     });
   }

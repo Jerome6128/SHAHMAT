@@ -33,10 +33,6 @@ class CompetitorsController < ApplicationController
     if @competitor.save
       flash[:notice] = "Collecting information..."
       InfogreffeJob.perform_later(@competitor.id)
-      CompetitorChannel.broadcast_to(
-        @competitor,
-        render_to_string(partial: "id_card", locals: { competitor: @competitor })
-      )
       redirect_to competitor_path(@competitor, section: "ID")
     else
       render 'new'
