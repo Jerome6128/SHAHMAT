@@ -5,7 +5,7 @@ class InfogreffeScraperService
 
   def scrape(competitor)
     # retriev informatiton from infogreffe
-    browser = Ferrum::Browser.new(timeout: 120)
+    browser = Ferrum::Browser.new(timeout: 240)
     url = "https://www.infogreffe.com/entreprise-societe/#{@siren}"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
