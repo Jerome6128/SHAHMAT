@@ -2,17 +2,19 @@ require_relative '../services/infogreffe_scraper_service.rb'
 require_relative '../services/wttj_scraper_service.rb'
 class CompetitorsController < ApplicationController
   def index
-    @competitors = Competitor.all
-    @user = User.new
+    # @competitors = Competitor.all
+    # @user = User.new
 
     if params[:query].present?
       sql_query = " \
-        competitors.brand_name @@ :query \
+        competitors.trading_name @@ :query \
         OR competitors.siren @@ :query \
       "
       @competitors = Competitor.where(sql_query, query: "%#{params[:query]}%")
+      @competitors = @competitors.where(user: current_user)
     else
       @competitors = Competitor.all
+      @competitors = @competitors.where(user: current_user)
     end
   end
 
@@ -26,27 +28,19 @@ class CompetitorsController < ApplicationController
 
   def create
     @competitor = Competitor.new(competitor_params)
+    @competitor.siren = @competitor.siren.gsub(" ", "")
     @competitor.user = current_user
     if @competitor.save
       flash[:notice] = "Collecting information..."
-      IdscraperJob.perform_later(@competitor.id)
-      redirect_to competitor_path(@competitor)
-      # update
+      InfogreffeJob.perform_later(@competitor.id)
+      redirect_to competitor_path(@competitor, section: "ID")
     else
       render 'new'
     end
   end
 
   def update
-    # @competitor = Competitor.find(params[:id])
-    # @job_search = WttjScraperService.new(@competitor.brand_name)
-    # @jobs_result = @job_search.scrape
-    # @jobs_result.each do |job|
-    #   @job_offer = JobOffer.new(job)
-    #   @job_offer.competitor = @competitor
-    # #   @job_offer.save
-    # end
-    # redirect_to competitor_path(@competitor)
+
   end
 
   private

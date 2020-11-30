@@ -6,6 +6,41 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "thierry", email: "thierry@gmail.com", password: "password")
-User.create!(name: "florian", email: "florian@gmail.com", password: "password")
-User.create!(name: "jerome", email: "jerome@gmail.com", password: "password")
+# delete eexisting users and depenbencies
+JobOffer.destroy_all
+KeyFigure.destroy_all
+Competitor.destroy_all
+User.destroy_all
+
+# generate users
+User.create!(name: "thierry", email: "thierry@gmail.com", password: "password", admin: true)
+User.create!(name: "florian", email: "florian@gmail.com", password: "password", admin: true)
+User.create!(name: "jerome", email: "jerome@gmail.com", password: "password", admin: true)
+
+# generate competitors for jerome
+siren = [
+  "820867877",
+  "814428785",
+  "839793791",
+  "822183711",
+  "817618051",
+  "798098430",
+  "832146237",
+  "835143751",
+  "820557254",
+  "751610015",
+  "501170187",
+  "827748518",
+  "821737319",
+  "819440371",
+  "819531864",
+  "803147446",
+  "572079150"
+]
+siren.each do |siren|
+  competitor = Competitor.new(siren: siren)
+  competitor.user  = User.find_by(name: "jerome")
+  competitor.save
+  InfogreffeJob.perform_later(competitor.id)
+end
+
