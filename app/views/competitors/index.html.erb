@@ -20,16 +20,13 @@
           <%= link_to competitor_path(competitor, section: "ID") do %>
             <div class="card-product">
               <% if competitor.photo.attached? %>
-                <%= cl_image_tag(competitor.photo.key, :width=>150, :height=>120, :crop=>"pad")%>
+                <%= cl_image_tag(competitor.photo.key, :width=>300, :height=>120, :crop=>"pad")%>
               <% else %>
                   <%= image_tag "logo-not-found.jpg" %>
               <% end %>
               <% if competitor.today? %>
                 <span class="badge badge-success"><i class="fas fa-bell"></i></span>
               <% end %>
-              <div class="card-product-infos">
-                <h2><%= competitor.trading_name %></h2>
-              </div>
             </div>
           <% end %>
         <% end %>
