@@ -11,15 +11,16 @@ class CompetitorsController < ApplicationController
         OR competitors.siren @@ :query \
       "
       @competitors = Competitor.where(sql_query, query: "%#{params[:query]}%")
-      @competitors = @competitors.where(user: current_user)
+      @competitors = @competitors.where(company: current_user.company)
     else
       @competitors = Competitor.all
-      @competitors = @competitors.where(user: current_user)
+      @competitors = @competitors.where(company: current_user.company)
     end
   end
 
   def show
     @competitor = Competitor.find(params[:id])
+    @message = Message.new
   end
 
   def new
@@ -29,7 +30,7 @@ class CompetitorsController < ApplicationController
   def create
     @competitor = Competitor.new(competitor_params)
     @competitor.siren = @competitor.siren.gsub(" ", "")
-    @competitor.user = current_user
+    @competitor.company = current_user.company
     if @competitor.save
       flash[:notice] = "Collecting information..."
       InfogreffeJob.perform_later(@competitor.id)

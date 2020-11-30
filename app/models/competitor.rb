@@ -1,5 +1,7 @@
 class Competitor < ApplicationRecord
-  belongs_to :user
+  belongs_to :company
+  has_many :messages
+
   has_one_attached :photo
   has_many :key_figures, dependent: :destroy
   has_many :job_offers, dependent: :destroy
