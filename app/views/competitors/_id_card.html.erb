@@ -1,9 +1,9 @@
 
-<div class="container <%= "hidden" unless params[:section] == "ID" %>">
+<div class="container <%= "hidden" unless visible %>">
   <div class="row align-items-center">
     <div class="col-sm-12 col-md-6">
-      <% if @competitor.photo.attached? %>
-        <%= cl_image_tag @competitor.photo.key %>
+      <% if competitor.photo.attached? %>
+        <%= cl_image_tag competitor.photo.key %>
       <% else %>
         <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
       <% end %>
@@ -16,23 +16,23 @@
       <hr>
       <div class="bg-white my-4">
         <h5 class="p-2 bg-primary text-white"><strong>Summary:</strong></h5>
-        <p class="pl-5 py-2"><%= @competitor.summary %></p>
+        <p class="pl-5 py-2"><%= competitor.summary %></p>
       </div>
 
       <div  class="bg-white my-4">
         <h5 class="p-2 bg-primary text-white"><strong>Legal details:</strong></h5>
         <ul class="pl-5 py-2 list-unstyled">
-          <li><strong>Registration name: </strong><%= @competitor.brand_name %></li>
-          <li><strong>Trading name: </strong><%= @competitor.trading_name %></li>
-          <li><strong>Address: </strong> <%= @competitor.address %></li>
-          <li><strong>Website: </strong> <%= @competitor.website %></li>
-          <li><strong>SIREN: </strong> <%= @competitor.siren %></li>
-          <li><strong>RCS: </strong> <%= @competitor.rcs %></li>
-          <li><strong>SIRET: </strong> <%= @competitor.siret %></li>
-          <li><strong>NAF: </strong> <%= @competitor.naf %></li>
-          <li><strong>Legal form: </strong><%= @competitor.legal_form %></li>
-          <li><strong>Equity: </strong><%= @competitor.equity %></li>
-          <li><strong>CEO: </strong><%= @competitor.ceo %></li>
+          <li><strong>Registration name: </strong><%= competitor.brand_name %></li>
+          <li><strong>Trading name: </strong><%= competitor.trading_name %></li>
+          <li><strong>Address: </strong> <%= competitor.address %></li>
+          <li><strong>Website: </strong> <%= competitor.website %></li>
+          <li><strong>SIREN: </strong> <%= competitor.siren %></li>
+          <li><strong>RCS: </strong> <%= competitor.rcs %></li>
+          <li><strong>SIRET: </strong> <%= competitor.siret %></li>
+          <li><strong>NAF: </strong> <%= competitor.naf %></li>
+          <li><strong>Legal form: </strong><%= competitor.legal_form %></li>
+          <li><strong>Equity: </strong><%= competitor.equity %></li>
+          <li><strong>CEO: </strong><%= competitor.ceo %></li>
         </ul>
       </div>
     </div>

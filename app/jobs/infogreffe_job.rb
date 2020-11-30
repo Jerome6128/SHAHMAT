@@ -40,6 +40,10 @@ class InfogreffeJob < ApplicationJob
       key_figure.save
     end
     competitor.save
+    CompetitorChannel.broadcast_to(
+      competitor,
+      ApplicationController.renderer.render(partial: "competitors/id_card", locals: { competitor: competitor, visible: true })
+    )
     competitor.reload
     SocietecomJob.perform_later(competitor.id)
   end
