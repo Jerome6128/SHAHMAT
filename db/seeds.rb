@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
 p "delete existing users and depenbencies"
 JobOffer.destroy_all
@@ -21,6 +22,12 @@ t = User.create!(name: "thierry", email: "thierry@gmail.com", password: "passwor
 f = User.create!(name: "florian", email: "florian@gmail.com", password: "password", admin: true, company_id: ai.id)
 j = User.create!(name: "jerome", email: "jerome@gmail.com", password: "password", admin: true, company_id: ai.id)
 
+j_githubphoto = URI.open("https://kitt.lewagon.com/placeholder/users/Jerome6128")
+j.photo.attach(io: j_githubphoto, filename: 'javatar.png', content_type: 'image/png')
+f_githubphoto = URI.open("https://kitt.lewagon.com/placeholder/users/Boursifleur")
+f.photo.attach(io: f_githubphoto, filename: 'javatar.png', content_type: 'image/png')
+t_githubphoto = URI.open("https://kitt.lewagon.com/placeholder/users/Tylapo")
+t.photo.attach(io: t_githubphoto, filename: 'javatar.png', content_type: 'image/png')
 
 p "generate competitors for Air Indemnité"
 siren = [
