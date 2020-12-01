@@ -53,5 +53,5 @@ siren.each do |siren|
   competitor = Competitor.new(siren: siren)
   competitor.company = Company.find_by(name: "Air Indemnité")
   competitor.save
-  InfogreffeJob.new.perform(competitor.id)
+  InfogreffeJob.perform_later(competitor.id)
 end

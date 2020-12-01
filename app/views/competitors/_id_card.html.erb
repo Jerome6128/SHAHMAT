@@ -18,11 +18,10 @@
         <h5 class="p-2 bg-primary text-white"><strong>Summary:</strong></h5>
         <p class="pl-5 py-2"><%= competitor.summary %></p>
       </div>
-
-      <div  class="bg-white my-4">
+      <div class="bg-white my-4">
         <h5 class="p-2 bg-primary text-white"><strong>Legal details:</strong></h5>
         <ul class="pl-5 py-2 list-unstyled">
-          <li><strong>Registration name: </strong><%= competitor.brand_name %></li>
+          <li><strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
           <li><strong>Trading name: </strong><%= competitor.trading_name %></li>
           <li><strong>Address: </strong> <%= competitor.address %></li>
           <li><strong>Website: </strong> <%= competitor.website %></li>

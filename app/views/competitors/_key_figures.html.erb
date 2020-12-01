@@ -38,10 +38,10 @@
       <h3>Comments</h3>
       <p class="kfComments">KEY FIGURES</p>
     </div>
-    <p>nb #<%= @competitor.messages.where(category: "Key Figures").count %></p>
+    <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "Key Figures").count %></p>
     <% @competitor.messages.order(created_at: :desc).each do |message| %>
-      <div class="bodyComments">
-        <% if message.category == "Key Figures" %> 
+      <% if message.category == "Key Figures" %> 
+        <div class="bodyComments">
           <div class="infoComments">
             <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
             <br>
@@ -52,8 +52,8 @@
             <%= message.created_at.strftime("%H:%M") %>
           </div>
           <div class="textComments"><%= message.content %></div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
