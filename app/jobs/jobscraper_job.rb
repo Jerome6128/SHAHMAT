@@ -30,7 +30,7 @@ class JobscraperJob < ApplicationJob
 
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
-    browser = Ferrum::Browser.new(timeout: 30)
+    browser = Ferrum::Browser.new(timeout: 60)
     url = "https://www.welcometothejungle.com/fr/companies/#{competitor.brand_name.parameterize}/jobs"
     browser.goto(url)
     browser.mouse.scroll_to(0, 400)
