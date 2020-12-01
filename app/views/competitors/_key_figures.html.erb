@@ -1,59 +1,55 @@
 <div class="container <%= "hidden" unless params[:section] == "Key Figures" %>">
-  <div class="row align-items-center">
-     <div class="col-sm-12 col-md-6">
-      <% if @competitor.photo.attached? %>
-        <%= cl_image_tag @competitor.photo.key %>
-      <% else %>
-        <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <hr>
-      <h3>Key Figures</h3>
-      <hr>
-      <table class="table table-striped">
-        <tbody>
-          <thead class="text-white bg-primary">
-            <th>Close</th>
-            <th>Turnover</th>
-            <th>Profit</th>
-            <th>Workforce</th>
-          </thead>
-          <% @competitor.key_figures.each do |key_figure| %>
-          <tr>
-            <td><%= key_figure.close %></td>
-            <td><%= key_figure.turnover %></td>
-            <td><%= key_figure.profit %> </td>
-            <td><%= key_figure.workforce %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="comments">
-    <div class="headerComments">
-      <h3>Comments</h3>
-      <p class="kfComments">KEY FIGURES</p>
-    </div>
-    <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "Key Figures").count %></p>
-    <% @competitor.messages.order(created_at: :desc).each do |message| %>
-      <% if message.category == "Key Figures" %> 
-        <div class="bodyComments">
-          <div class="infoComments">
-            <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-            <br>
-            <%= message.user.name.capitalize %>
-            <br>
-            <%= message.created_at.strftime("%d/%m/%Y") %>
-            <br>
-            <%= message.created_at.strftime("%H:%M") %>
-          </div>
-          <div class="textComments"><%= message.content %></div>
-        </div>
-      <% end %>
+  <div>
+    <% if @competitor.photo.attached? %>
+      <%= cl_image_tag @competitor.photo.key %>
+    <% else %>
+      <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
     <% end %>
+  </div>
+  <hr>
+  <h3>Key Figures</h3>
+  <hr>
+  <div class="contentShow">
+    <table class="table table-striped">
+      <tbody>
+        <thead class="text-white bg-primary">
+          <th>Close</th>
+          <th>Turnover</th>
+          <th>Profit</th>
+          <th>Workforce</th>
+        </thead>
+        <% @competitor.key_figures.each do |key_figure| %>
+        <tr>
+          <td><%= key_figure.close %></td>
+          <td><%= key_figure.turnover %></td>
+          <td><%= key_figure.profit %> </td>
+          <td><%= key_figure.workforce %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="comments">
+      <div class="headerComments">
+        <h3>Comments</h3>
+        <p class="kfComments">KEY FIGURES</p>
+      </div>
+      <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "Key Figures").count %></p>
+      <% @competitor.messages.order(created_at: :desc).each do |message| %>
+        <% if message.category == "Key Figures" %> 
+          <div class="bodyComments">
+            <div class="infoComments">
+              <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+              <br>
+              <%= message.user.name.capitalize %>
+              <br>
+              <%= message.created_at.strftime("%d/%m/%Y") %>
+              <br>
+              <%= message.created_at.strftime("%H:%M") %>
+            </div>
+            <div class="textComments"><%= message.content %></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

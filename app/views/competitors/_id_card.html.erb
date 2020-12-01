@@ -1,60 +1,57 @@
-
 <div class="container <%= "hidden" unless visible %>">
-  <div class="row align-items-center">
-    <div class="col-sm-12 col-md-6">
-      <% if competitor.photo.attached? %>
-        <%= cl_image_tag competitor.photo.key %>
-      <% else %>
-        <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
-      <% end %>
-    </div>
+  <div>
+    <% if competitor.photo.attached? %>
+      <%= cl_image_tag competitor.photo.key %>
+    <% else %>
+      <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <hr>
-      <h3>Legal information</h3>
-      <hr>
-      <div class="bg-white my-4">
-        <h5 class="p-2 bg-primary text-white"><strong>Summary:</strong></h5>
+  <hr>
+  <h3>Legal information</h3>
+  <hr>
+  <div class="contentShow">
+    <div>
+      <div class="scrapdatabox">
+        <h3>Summary</h3>
         <p class="pl-5 py-2"><%= competitor.summary %></p>
       </div>
-      <div class="bg-white my-4">
-        <h5 class="p-2 bg-primary text-white"><strong>Legal details:</strong></h5>
+      <div class="scrapdatabox">
+        <h3>Legal details</h3>
         <ul class="pl-5 py-2 list-unstyled">
-          <li><strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
-          <li><strong>Trading name: </strong><%= competitor.trading_name %></li>
-          <li><strong>Address: </strong> <%= competitor.address %></li>
-          <li><strong>Website: </strong> <%= competitor.website %></li>
-          <li><strong>SIREN: </strong> <%= competitor.siren %></li>
-          <li><strong>RCS: </strong> <%= competitor.rcs %></li>
-          <li><strong>SIRET: </strong> <%= competitor.siret %></li>
-          <li><strong>NAF: </strong> <%= competitor.naf %></li>
-          <li><strong>Legal form: </strong><%= competitor.legal_form %></li>
-          <li><strong>Equity: </strong><%= competitor.equity %></li>
-          <li><strong>CEO: </strong><%= competitor.ceo %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Trading name: </strong><%= competitor.trading_name %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Address: </strong> <%= competitor.address %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= competitor.website %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIREN: </strong> <%= competitor.siren %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>RCS: </strong> <%= competitor.rcs %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIRET: </strong> <%= competitor.siret %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>NAF: </strong> <%= competitor.naf %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Legal form: </strong><%= competitor.legal_form %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Equity: </strong><%= competitor.equity %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>CEO: </strong><%= competitor.ceo %></li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="comments">
-    <div class="headerComments">
-      <h3>Comments</h3>
-      <p class="idComments">LEGAL INFORMATION</p>
-    </div>
-    <p class="nbComments">number of comments #<%= @competitor.messages.count %></p>
-    <% @competitor.messages.order(created_at: :desc).each do |message| %>
-      <div class="bodyComments">
-        <div class="infoComments">
-          <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-          <br>
-          <%= message.user.name.capitalize %>
-          <br>
-          <%= message.created_at.strftime("%d/%m/%Y") %>
-          <br>
-          <%= message.created_at.strftime("%H:%M") %>
-        </div>
-        <div class="textComments"><%= message.content %></div>
+    <div class="comments">
+      <div class="headerComments">
+        <h3>Comments</h3>
+        <p class="idComments">LEGAL INFORMATION</p>
       </div>
-    <% end %>
+      <p class="nbComments">number of comments #<%= @competitor.messages.count %></p>
+      <% @competitor.messages.order(created_at: :desc).each do |message| %>
+        <div class="bodyComments">
+          <div class="infoComments">
+            <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+            <br>
+            <%= message.user.name.capitalize %>
+            <br>
+            <%= message.created_at.strftime("%d/%m/%Y") %>
+            <br>
+            <%= message.created_at.strftime("%H:%M") %>
+          </div>
+          <div class="textComments"><%= message.content %></div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
