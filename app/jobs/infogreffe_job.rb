@@ -3,7 +3,7 @@ class InfogreffeJob < ApplicationJob
 
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
-    browser = Ferrum::Browser.new(timeout: 120)
+    browser = Ferrum::Browser.new(timeout: 60)
     url = "https://www.infogreffe.com/entreprise-societe/#{competitor.siren}"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
@@ -35,14 +35,14 @@ class InfogreffeJob < ApplicationJob
         turnover: year[1],
         profit: year[2],
         workforce: year[3]
-      })
+        })
       key_figure.competitor = competitor
       key_figure.save
     end
     competitor.save
     CompetitorChannel.broadcast_to(
       competitor,
-      {html: ApplicationController.renderer.render(partial: "competitors/id_card", locals: { competitor: competitor, visible: true }), trading_name: competitor.trading_name }
+      { html: ApplicationController.renderer.render(partial: "competitors/id_card", locals: { competitor: competitor, visible: true }), trading_name: competitor.trading_name }
     )
     competitor.reload
     SocietecomJob.perform_later(competitor.id)
