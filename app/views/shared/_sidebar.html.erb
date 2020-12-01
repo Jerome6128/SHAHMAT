@@ -24,7 +24,7 @@
     <p class="<%= "highlight menu-item" if params[:action] == "new" %> pl-2 py-2"><i class="fas fa-user-edit"></i> <%= link_to "Add a competitor", new_competitor_path %></p>
     <% if @competitor && !(@competitor.id.nil?) %>
       <div class="link-text-sidebar">
-        <div class="d-flex-justify-content sidebar-section highlight py-2 pl-4">
+        <div id="sidebar-results" data-competitor-id="<%= @competitor.id %>" class="d-flex-justify-content sidebar-section highlight py-2 pl-4">
           <%= @competitor.trading_name %>
         </div>
         <div class="section">
@@ -36,6 +36,5 @@
       </div>
     <% end %>
   </div>
-
   <%= render "shared/popupform" %>
 </div>
