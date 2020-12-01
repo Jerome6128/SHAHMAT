@@ -4,6 +4,7 @@ class CompetitorsController < ApplicationController
   def index
     # @competitors = Competitor.all
     # @user = User.new
+    @company = current_user.company
 
     if params[:query].present?
       sql_query = " \

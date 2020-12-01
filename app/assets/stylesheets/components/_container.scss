@@ -3,12 +3,13 @@
 }
 
 .container-search form {
-  position: sticky;
   top: 0px;
   padding-top: 20px;
   z-index: 2;
   background-color: #F4F4F4;
   display: flex;
+  width: 100%;
+  flex-grow:1
 }
 
 .container-search form #query {

@@ -1,16 +1,38 @@
 .sidebar {
   width: 200px;
   height: 100vh;
-  margin: 0px 10px 5px 5px;
   padding: 10px 10px 10px 10px;
   display: inline-block;
-  background-color: white;
+  background-color: #363740;
   // background-color: #120078;
   position: fixed;
+  color: #60626E;
+  text-color: yellow;
+}
+
+.sidebar p {
+  color: $shahmat-grey
+}
+
+.sidebar a {
+  color : $shahmat-grey
 }
 
 .sidebar-margin {
   margin-left: 200px;
+}
+
+.sidebar-logo {
+  align-items: center;
+}
+
+.sidebar-logo a {
+  margin-right: 15px;
+}
+
+.sidebar-logo p {
+  font-weight: 800;
+  font-size: 18px;
 }
 
 .sidebar img {
@@ -20,22 +42,31 @@
 .sidebar-logo img {
   width: 50px;
   height: 50px;
-  position: absolute;
   left: 15px;
   bottom: 15px;
 }
 
+.menu-item {
+  border-left: 5px solid #363740;
+}
+
 .highlight {
-  border: outset thin;
-  width: 180px;
-  border-radius: 10px;
-  border-color: #ced4da;
+ border-left: 5px solid $shahmat-light-grey;
+ background-color: $shahmat-grey;
+}
+
+.highlight .fas, .highlight a {
+ color: $shahmat-light-grey;
 }
 
 .sidebar-section img {
   height: 20px;
   width: 20px;
   border-radius: 50%;
+}
+
+.sidebar .fas {
+  margin-right: 4px;
 }
 
 .section {
@@ -47,5 +78,18 @@
 }
 
 .section a:hover {
-  color: #993399;
+  color: $shahmat-light-grey;
+}
+
+.link-text-sidebar {
+  color: $shahmat-light-grey;
+}
+.link-text-sidebar a {
+  text-decoration: none;
+  color: #shahmat-grey;
+}
+
+.link-text-sidebar a:hover {
+  text-decoration: none;
+  color: #shahmat-light-grey;
 }
