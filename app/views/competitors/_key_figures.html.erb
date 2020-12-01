@@ -43,7 +43,7 @@
       <div class="bodyComments">
         <% if message.category == "Key Figures" %> 
           <div class="infoComments">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
+            <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
             <br>
             <%= message.user.name.capitalize %>
             <br>
