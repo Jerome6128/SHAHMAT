@@ -43,6 +43,7 @@ siren = [
   "572079150"
 ]
 siren.each do |siren|
+  sleep(10)
   competitor = Competitor.new(siren: siren)
   competitor.company = Company.find_by(name: "Air Indemnité")
   competitor.save
