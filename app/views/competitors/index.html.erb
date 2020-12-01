@@ -1,16 +1,32 @@
-
 <div class="flex-container">
   <%= render "shared/sidebar" %>
-
   <div class="container-search container-top-band sidebar-margin pl-4">
-    <%= form_tag competitors_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a competitor in your list"
-      %>
-      <%= submit_tag "Search", class: "btn btn-gradient" %>
-    <% end %>
+    <div class=d-flex>
+      <div>
+        <div class="d-flex">
+          <div class= "card-index-top">
+            <h4>Competitors</h4>
+            <h2> <%= @company.competitors.count %></h2>
+          </div>
+          <div class= "card-index-top">
+            <h4>Comments</h4>
+            <h2> <%= @company.messages.count %></h2>
+          </div>
+        </div>
+        <div>
+          <%= form_tag competitors_path, method: :get do %>
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a competitor in your list"
+            %>
+            <%= submit_tag "Search", class: "btn btn-gradient" %>
+          <% end %>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
     <br><br>
     <% if @competitors.length == 0 %>
         <h3> # Competitor not found # Let's create it ! </h3>

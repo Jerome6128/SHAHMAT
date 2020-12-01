@@ -17,6 +17,7 @@
   align-items: center;
   background-color: white;
   position: relative;
+  border-radius: 10px;
 }
 
 .card-product span {
@@ -50,6 +51,33 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.card-index-top {
+  border : 1px solid #9FA2B4;
+  border-radius: 10px;
+  border-color: #DFE0EB;
+  height: 140px;
+  margin-left: 16px;
+  width: 300px;
+  background-color: white;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.card-index-top:first-child {
+  margin-left: 0;
+
+}
+
+.card-index-top:hover{
+  border-color: $shahmat2;
+}
+
+.card-index-top h4 {
+  color: #9FA2B4;
 }
 
 // Smallest device

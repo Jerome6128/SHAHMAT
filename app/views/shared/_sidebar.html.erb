@@ -1,4 +1,10 @@
 <div class="sidebar">
+  <div class="sidebar-logo d-flex">
+    <%= link_to root_path do %>
+      <%= image_tag "logo_Shahmat.png" %>
+    <% end %>
+    <p>Shahmat</p>
+  </div>
   <ul class="navbar-nav mr-auto">
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
@@ -14,8 +20,8 @@
     <% end %>
   </ul>
   <div class="link-text-sidebar">
-    <p class="<%= "highlight" if params[:action] == "index" %> pl-2 py-2"><i class="fas fa-rocket"></i> <%= link_to "My dashboard", competitors_path %></p>
-    <p class="<%= "highlight" if params[:action] == "new" %> pl-2 py-2"><i class="fas fa-user-edit"></i> <%= link_to "Add a competitor", new_competitor_path %></p>
+    <p class="<%= "highlight" if params[:action] == "index" %> menu-item pl-2 py-2"><i class="fas fa-rocket"></i> <%= link_to "My dashboard", competitors_path %></p>
+    <p class="<%= "highlight menu-item" if params[:action] == "new" %> pl-2 py-2"><i class="fas fa-user-edit"></i> <%= link_to "Add a competitor", new_competitor_path %></p>
     <% if @competitor && !(@competitor.id.nil?) %>
       <div class="link-text-sidebar">
         <div id="sidebar-results" data-competitor-id="<%= @competitor.id %>" class="d-flex-justify-content sidebar-section highlight py-2 pl-4">
@@ -28,12 +34,6 @@
           <%= link_to "Brands", competitor_path(@competitor, :section => "Brands" ) %>
         </div>
       </div>
-    <% end %>
-  </div>
-
-  <div class="sidebar-logo">
-    <%= link_to root_path do %>
-      <%= image_tag "logo_Shahmat.png" %>
     <% end %>
   </div>
   <%= render "shared/popupform" %>
