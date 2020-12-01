@@ -1,50 +1,49 @@
 <div class="container <%= "hidden" unless params[:section] == "HR" %>">
-  <div class="row align-items-center">
-      <div class="col-sm-12 col-md-6">
-        <% if @competitor.photo.attached? %>
-          <%= cl_image_tag @competitor.photo.key %>
-        <% else %>
-          <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
-        <% end %>
-      </div>
+  <div>
+    <% if @competitor.photo.attached? %>
+      <%= cl_image_tag @competitor.photo.key %>
+    <% else %>
+      <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
+    <% end %>
   </div>
   <hr>
   <h3 class=""> Last job offers</h3>
   <hr>
-  <br>
-  <div class="row">
-    <% @competitor.job_offers.each do |job_offer| %>
-      <div class="jobcard col-6 col-md-4 m-2">
-        <div class="jobcard-infos">
-          <h2><%= job_offer.title %></h2>
-          <p><%= job_offer.location %></p>
-          <p>posted : <%= job_offer.posting_date %> on <%= job_offer.source %></p>
-        </div>
-        <%= link_to "", job_offer.job_url, target: :_blank%>
-      </div>
-    <% end %>
-  </div>
-  <div class="comments">
-    <div class="headerComments">
-      <h3>Comments</h3>
-      <p class="hrComments">HUMAN RESSOURCE</p>
-    </div>
-    <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "HR").count %></p>
-    <% @competitor.messages.order(created_at: :desc).each do |message| %>
-      <% if message.category == "HR" %> 
-        <div class="bodyComments">
-          <div class="infoComments">
-            <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-            <br>
-            <%= message.user.name.capitalize %>
-            <br>
-            <%= message.created_at.strftime("%d/%m/%Y") %>
-            <br>
-            <%= message.created_at.strftime("%H:%M") %>
+  <div class="contentShow">
+    <div class="row">
+      <% @competitor.job_offers.each do |job_offer| %>
+        <div class="jobcard col-6 col-md-4 m-2">
+          <div class="jobcard-infos">
+            <h2><%= job_offer.title %></h2>
+            <p><%= job_offer.location %></p>
+            <p>posted : <%= job_offer.posting_date %> on <%= job_offer.source %></p>
           </div>
-          <div class="textComments"><%= message.content %></div>
+          <%= link_to "", job_offer.job_url, target: :_blank%>
         </div>
       <% end %>
-    <% end %>
+    </div>
+    <div class="comments">
+      <div class="headerComments">
+        <h3>Comments</h3>
+        <p class="hrComments">HUMAN RESSOURCE</p>
+      </div>
+      <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "HR").count %></p>
+      <% @competitor.messages.order(created_at: :desc).each do |message| %>
+        <% if message.category == "HR" %> 
+          <div class="bodyComments">
+            <div class="infoComments">
+              <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+              <br>
+              <%= message.user.name.capitalize %>
+              <br>
+              <%= message.created_at.strftime("%d/%m/%Y") %>
+              <br>
+              <%= message.created_at.strftime("%H:%M") %>
+            </div>
+            <div class="textComments"><%= message.content %></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

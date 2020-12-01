@@ -1,0 +1,21 @@
+.contentShow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.scrapdatabox {
+  padding-top: 10px;
+  background: white;
+  border-radius: 15px;
+}
+
+.scrapdatabox h3 {
+  padding: 10px 20px 0px 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.scrapdatabox i {
+  color: #993399;
+}
