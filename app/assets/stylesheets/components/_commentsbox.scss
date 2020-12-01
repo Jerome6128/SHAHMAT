@@ -1,0 +1,60 @@
+.comments {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.headerComments {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bodyComments {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 20px;
+}
+
+.infoComments {
+  color: grey;
+  font-size: 12px;
+  max-width: 100px;
+}
+
+.textComments {
+  padding-left: 10px;
+}
+
+.kfComments {
+  background-color: #4F4F4F;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  width: 180px;
+  height: 30px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.hrComments {
+  background-color: #6FCF97;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  width: 180px;
+  height: 30px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.idComments {
+  background-color: #F2C94C;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  width: 180px;
+  height: 30px;
+  font-size: 13px;
+  text-align: center;
+}

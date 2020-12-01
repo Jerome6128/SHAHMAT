@@ -6,4 +6,6 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :competitors, through: :company
   has_many :messages
+  
+  has_one_attached :photo
 end

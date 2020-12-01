@@ -10,7 +10,8 @@ class MessagesController < ApplicationController
     @message.competitor_id = @competitor.id
     @message.user = current_user
     if @message.save
-      redirect_to competitor_path(@competitor, section: @message.category)
+      redirect_back(fallback_location: root_path)
+      # redirect_to competitor_path(@competitor, section: @message.category)
     else
       render 'new'
     end

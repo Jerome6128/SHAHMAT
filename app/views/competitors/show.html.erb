@@ -5,12 +5,5 @@
     <%= render "id_card", competitor: @competitor, visible: params[:section] == "ID"%>
     <%= render "hr", competitor: @competitor%>
     <%= render "key_figures", competitor: @competitor%>
-    <% @competitor.messages.each do |message| %>
-      <div>
-        <%= message.user.name %>
-        <%= message.created_at %>
-        <%= message.content %>
-      </div>
-    <% end %>
   </div>
 </div>

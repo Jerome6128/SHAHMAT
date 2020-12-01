@@ -3,11 +3,11 @@
     <%= simple_form_for [@competitor, @message] do |f| %>
       <%= f.input :category, collection: { "Legal" => "ID", "Human Ressources" => "HR", "Key Figures" => "Key Figures" } %>
       <%= f.input :content, label: "Message" %>
-      <button id="cancelMessage">Annuler</button> <%= f.submit %>
+      <button id="cancelMessage">Cancel</button> <%= f.button :submit, "Send", id: "createMessage" %>
     <% end %>
   </dialog>
 
   <menu>
-    <button id="updateDetails">Your Message</button>
+    <button id="updateDetails">Send a Message</button>
   </menu>
 <% end %>

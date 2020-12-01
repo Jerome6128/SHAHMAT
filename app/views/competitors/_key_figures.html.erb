@@ -33,4 +33,27 @@
       </table>
     </div>
   </div>
+  <div class="comments">
+    <div class="headerComments">
+      <h3>Comments</h3>
+      <p class="kfComments">KEY FIGURES</p>
+    </div>
+    <p>#comments: <%= @competitor.messages.where(category: "Key Figures").count %></p>
+    <% @competitor.messages.order(created_at: :desc).each do |message| %>
+      <div class="bodyComments">
+        <% if message.category == "Key Figures" %> 
+          <div class="infoComments">
+            <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+            <br>
+            <%= message.user.name.capitalize %>
+            <br>
+            <%= message.created_at.strftime("%d/%m/%Y") %>
+            <br>
+            <%= message.created_at.strftime("%H:%M") %>
+          </div>
+          <div class="textComments"><%= message.content %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
