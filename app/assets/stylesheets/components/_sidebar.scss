@@ -1,7 +1,7 @@
 .sidebar {
   min-width: 220px;
   height: 100vh;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 0px;
   display: inline-block;
   background-color: #363740;
   // background-color: #120078;
@@ -20,6 +20,7 @@
 
 .sidebar-logo {
   align-items: center;
+  margin-left: 10px;
 }
 
 .sidebar-logo a {
