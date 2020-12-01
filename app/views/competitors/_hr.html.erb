@@ -29,7 +29,7 @@
       <h3>Comments</h3>
       <p class="hrComments">HUMAN RESSOURCE</p>
     </div>
-    <p>#comments: <%= @competitor.messages.where(category: "HR").count %></p>
+    <p>#<%= @competitor.messages.where(category: "HR").count %></p>
     <% @competitor.messages.order(created_at: :desc).each do |message| %>
       <div class="bodyComments">
         <% if message.category == "HR" %> 

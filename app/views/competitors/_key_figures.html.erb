@@ -38,7 +38,7 @@
       <h3>Comments</h3>
       <p class="kfComments">KEY FIGURES</p>
     </div>
-    <p>#comments: <%= @competitor.messages.where(category: "Key Figures").count %></p>
+    <p>nb #<%= @competitor.messages.where(category: "Key Figures").count %></p>
     <% @competitor.messages.order(created_at: :desc).each do |message| %>
       <div class="bodyComments">
         <% if message.category == "Key Figures" %> 
