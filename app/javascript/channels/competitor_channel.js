@@ -8,7 +8,18 @@ const initCompetitorCable = () => {
     consumer.subscriptions.create({ channel: "CompetitorChannel", id: id }, {
       received(data) {
         console.log(data); // called when data is broadcast in the cable
-        resultsContainer.innerHTML = data ;
+        resultsContainer.innerHTML = data.html ;
+      },
+    });
+  }
+  const sidebarResultsContainer = document.getElementById('sidebar-results');
+  if (sidebarResultsContainer) {
+    const id = sidebarResultsContainer.dataset.competitorId;
+
+    consumer.subscriptions.create({ channel: "CompetitorChannel", id: id }, {
+      received(data) {
+        console.log(data); // called when data is broadcast in the cable
+        sidebarResultsContainer.innerHTML = data.trading_name ;
       },
     });
   }

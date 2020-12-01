@@ -1,7 +1,7 @@
 
 <div class="flex-container">
   <%= render "shared/sidebar" %>
-  <div id="results" data-competitor-id="<%= @competitor.id %>" class="container container-top-band sidebar-margin pl-4 mt-3">
+  <div  id="results" data-competitor-id="<%= @competitor.id %>" class="container container-top-band sidebar-margin pl-4 mt-3">
     <%= render "id_card", competitor: @competitor, visible: params[:section] == "ID"%>
     <%= render "hr", competitor: @competitor%>
     <%= render "key_figures", competitor: @competitor%>
