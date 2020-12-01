@@ -8,12 +8,21 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding: 10px 20px 0px 20px;
+}
+
+.nbComments {
+  padding: 10px 20px 0px 20px;
+  font-style: italic;
 }
 
 .bodyComments {
   display: flex;
   align-items: flex-start;
-  padding-bottom: 20px;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 30px;
 }
 
 .infoComments {

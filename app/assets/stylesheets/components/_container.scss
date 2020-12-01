@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.container-search {
+  flex-grow: 1;
+}
+
 .container-search form {
   top: 0px;
   padding-top: 20px;

@@ -18,8 +18,7 @@
         <h5 class="p-2 bg-primary text-white"><strong>Summary:</strong></h5>
         <p class="pl-5 py-2"><%= competitor.summary %></p>
       </div>
-
-      <div  class="bg-white my-4">
+      <div class="bg-white my-4">
         <h5 class="p-2 bg-primary text-white"><strong>Legal details:</strong></h5>
         <ul class="pl-5 py-2 list-unstyled">
           <li><strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
@@ -42,7 +41,7 @@
       <h3>Comments</h3>
       <p class="idComments">LEGAL INFORMATION</p>
     </div>
-    <p>#comments: <%= @competitor.messages.count %></p>
+    <p class="nbComments">number of comments #<%= @competitor.messages.count %></p>
     <% @competitor.messages.order(created_at: :desc).each do |message| %>
       <div class="bodyComments">
         <div class="infoComments">

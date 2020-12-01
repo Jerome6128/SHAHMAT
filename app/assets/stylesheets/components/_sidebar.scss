@@ -1,13 +1,13 @@
 .sidebar {
-  width: 200px;
+  min-width: 220px;
   height: 100vh;
   padding: 10px 10px 10px 10px;
   display: inline-block;
   background-color: #363740;
   // background-color: #120078;
-  position: fixed;
+  position: sticky;
+  top: 0;
   color: #60626E;
-  text-color: yellow;
 }
 
 .sidebar p {
@@ -16,10 +16,6 @@
 
 .sidebar a {
   color : $shahmat-grey
-}
-
-.sidebar-margin {
-  margin-left: 200px;
 }
 
 .sidebar-logo {
