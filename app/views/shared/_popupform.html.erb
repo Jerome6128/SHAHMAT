@@ -1,0 +1,13 @@
+<% if @message %>
+  <dialog id="favDialog">
+    <%= simple_form_for [@competitor, @message] do |f| %>
+      <%= f.input :category, collection: { "Legal" => "ID", "Human Ressources" => "HR", "Key Figures" => "Key Figures" } %>
+      <%= f.input :content, label: "Message" %>
+      <button id="cancelMessage">Annuler</button> <%= f.submit %>
+    <% end %>
+  </dialog>
+
+  <menu>
+    <button id="updateDetails">Your Message</button>
+  </menu>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_164046) do
+ActiveRecord::Schema.define(version: 2020_11_30_102506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,13 @@ ActiveRecord::Schema.define(version: 2020_11_29_164046) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "competitors", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "brand_name", default: "NA"
     t.string "address", default: "NA"
     t.string "website", default: "NA"
@@ -52,7 +57,8 @@ ActiveRecord::Schema.define(version: 2020_11_29_164046) do
     t.text "summary", default: "NA"
     t.string "equity", default: "NA"
     t.string "ceo", default: "NA"
-    t.index ["user_id"], name: "index_competitors_on_user_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_competitors_on_company_id"
   end
 
   create_table "job_offers", force: :cascade do |t|
@@ -78,6 +84,17 @@ ActiveRecord::Schema.define(version: 2020_11_29_164046) do
     t.index ["competitor_id"], name: "index_key_figures_on_competitor_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "competitor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
+    t.index ["competitor_id"], name: "index_messages_on_competitor_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,12 +105,17 @@ ActiveRecord::Schema.define(version: 2020_11_29_164046) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.boolean "admin", default: false, null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "competitors", "users"
+  add_foreign_key "competitors", "companies"
   add_foreign_key "job_offers", "competitors"
   add_foreign_key "key_figures", "competitors"
+  add_foreign_key "messages", "competitors"
+  add_foreign_key "messages", "users"
+  add_foreign_key "users", "companies"
 end

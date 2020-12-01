@@ -16,6 +16,10 @@ class SocietecomJob < ApplicationJob
     # retrieve the equity
     element = html_doc.search('/html/body/div[2]/div[12]/div[1]/div/section/div[2]/table[1]/tbody/tr[14]/td/div/div[1]/div[3]').text
     competitor.equity = element.gsub("\n", "")
+    CompetitorChannel.broadcast_to(
+      competitor,
+      ApplicationController.renderer.render(partial: "competitors/id_card", locals: { competitor: competitor, visible: true })
+    )
     competitor.save
     competitor.reload
     LogoJob.perform_later(competitor.id)

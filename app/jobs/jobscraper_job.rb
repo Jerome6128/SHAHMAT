@@ -75,5 +75,10 @@ class JobscraperJob < ApplicationJob
       @job_offer.competitor = competitor
       @job_offer.save!
     end
+    competitor.save
+    CompetitorChannel.broadcast_to(
+      competitor,
+      ApplicationController.renderer.render(partial: "competitors/id_card", locals: { competitor: competitor, visible: true })
+    )
   end
 end
