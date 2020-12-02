@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  flex-grow: 1;
+  width: 1000px;
+  margin-left: 20px;
 }
 
 .cards img {
@@ -31,7 +32,7 @@
 .card-product img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: center;
 }
 
 .card-product h2 {
@@ -51,6 +52,10 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.cards-top {
+  margin-left: 20px;
 }
 
 .card-index-top {

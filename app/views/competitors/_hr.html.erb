@@ -12,7 +12,7 @@
   <div class="contentShow">
     <div class="row">
       <% @competitor.job_offers.each do |job_offer| %>
-        <div class="jobcard col-6 col-md-4 m-2">
+        <div class="jobcard col-12 ">
           <div class="jobcard-infos">
             <h2><%= job_offer.title %></h2>
             <p><%= job_offer.location %></p>
@@ -29,7 +29,7 @@
       </div>
       <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "HR").count %></p>
       <% @competitor.messages.order(created_at: :desc).each do |message| %>
-        <% if message.category == "HR" %> 
+        <% if message.category == "HR" %>
           <div class="bodyComments">
             <div class="infoComments">
               <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
