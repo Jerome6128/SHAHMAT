@@ -1,11 +1,16 @@
 #updateDetails {
-  border-style: unset;
-  background-color: #993399;
-  color: white;
+  // border-style: unset;
+  // background-color: #993399;
+  // color: white;
+  // border-radius: 5px;
+  // padding: 10px;
+  // margin-top: 20px;
+  // width: 180px;
+  margin-bottom: 15px;
+  margin-left: 22px;
+  border: 1px solid;
+  background-color: white;
   border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
-  width: 180px;
 }
 
 #favDialog {
@@ -18,7 +23,7 @@
 }
 
 #message_content {
-  height: 100px;
+  height: 150px;
   font-size: 15px;
 }
 
@@ -32,4 +37,8 @@
   border-style: unset;
   height: 28px;
   padding: 0 20px 0 20px;
+}
+
+#new_message {
+  display: inline;
 }

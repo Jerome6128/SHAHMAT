@@ -9,11 +9,23 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px 20px 0px 20px;
+  position: relative;
 }
 
 .nbComments {
-  padding: 10px 20px 0px 20px;
-  font-style: italic;
+  justify-content: space-evenly;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: #993399;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: absolute;
+  left: 148px;
+  top: 48px;
 }
 
 .bodyComments {

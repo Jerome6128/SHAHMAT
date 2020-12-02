@@ -9,7 +9,9 @@ class MessagesController < ApplicationController
     @competitor = Competitor.find(params[:competitor_id])
     @message.competitor_id = @competitor.id
     @message.user = current_user
-    if @message.save
+    p @message
+    p @message.valid?
+    if @message.save!
       redirect_back(fallback_location: root_path)
       # redirect_to competitor_path(@competitor, section: @message.category)
     else

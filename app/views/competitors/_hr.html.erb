@@ -24,10 +24,10 @@
     </div>
     <div class="comments">
       <div class="headerComments">
-        <h3>Comments</h3>
+        <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "HR").count %> </span></h3>
         <p class="hrComments">HUMAN RESSOURCE</p>
       </div>
-      <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "HR").count %></p>
+      <%= render "shared/popupform" %>
       <% @competitor.messages.order(created_at: :desc).each do |message| %>
         <% if message.category == "HR" %>
           <div class="bodyComments">
