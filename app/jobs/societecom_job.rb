@@ -7,6 +7,7 @@ class SocietecomJob < ApplicationJob
     url = "https://www.societe.com/societe/#{competitor.brand_name}-#{competitor.siren}.html"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
+    browser.quit
     # retrieve the summary of the company
     element = html_doc.search('#synthese').text
     competitor.summary = element.gsub("\n", "")

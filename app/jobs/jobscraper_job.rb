@@ -41,6 +41,7 @@ class JobscraperJob < ApplicationJob
     end
 
     html_doc = Nokogiri::HTML(browser.body)
+    browser.quit
     # p html_doc
     jobs = []
     html_doc.search(".sc-1flb27e-5").each do |element|
