@@ -37,20 +37,22 @@
         <h3>Comments</h3>
         <p class="idComments">LEGAL INFORMATION</p>
       </div>
-      <p class="nbComments">number of comments #<%= competitor.messages.count %></p>
+      <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "ID").count %></p>
       <% competitor.messages.order(created_at: :desc).each do |message| %>
-        <div class="bodyComments">
-          <div class="infoComments">
-            <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-            <br>
-            <%= message.user.name.capitalize %>
-            <br>
-            <%= message.created_at.strftime("%d/%m/%Y") %>
-            <br>
-            <%= message.created_at.strftime("%H:%M") %>
+        <% if message.category == "ID" %> 
+          <div class="bodyComments">
+            <div class="infoComments">
+              <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+              <br>
+              <%= message.user.name.capitalize %>
+              <br>
+              <%= message.created_at.strftime("%d/%m/%Y") %>
+              <br>
+              <%= message.created_at.strftime("%H:%M") %>
+            </div>
+            <div class="textComments"><%= message.content %></div>
           </div>
-          <div class="textComments"><%= message.content %></div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

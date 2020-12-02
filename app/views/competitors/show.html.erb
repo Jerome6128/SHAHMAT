@@ -2,6 +2,7 @@
 <div class="flex-container">
   <%= render "shared/sidebar" %>
   <div  id="results" data-competitor-id="<%= @competitor.id %>" class="container-search">
+    <%= render "shared/navbar-inside" %>
     <%= render "id_card", competitor: @competitor, visible: params[:section] == "ID"%>
     <%= render "hr", competitor: @competitor%>
     <%= render "key_figures", competitor: @competitor%>

@@ -10,3 +10,30 @@
 .navbar-lewagon .navbar-brand img {
   width: 80px;
 }
+
+.navbar-lewagon-inside {
+  justify-content: space-between;
+}
+
+.navbar-lewagon-inside .navbar-collapse {
+  position: relative;
+}
+
+.navbar-lewagon-inside ul {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.navbar-nav-inside li {
+  color: $shahmat-grey;
+}
+
+.fa {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.current-user-name {
+  margin-left: 10px;
+}
