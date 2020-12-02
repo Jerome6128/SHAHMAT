@@ -3,10 +3,11 @@ class InfogreffeJob < ApplicationJob
 
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
-    browser = Ferrum::Browser.new(timeout: 60)
+    browser = Ferrum::Browser.new({ timeout: 60, headless: true, process_timeout: 60 })
     url = "https://www.infogreffe.com/entreprise-societe/#{competitor.siren}"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
+    browser.quit
     # retrieve the name of the company
     element = html_doc.search('//*[@id="identification"]/h1').text.split(" ")
     competitor.brand_name = element.take(element.index("Partager")).join(" ")

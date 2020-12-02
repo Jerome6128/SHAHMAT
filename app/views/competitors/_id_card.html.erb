@@ -38,7 +38,7 @@
         <p class="idComments">LEGAL INFORMATION</p>
       </div>
       <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "ID").count %></p>
-      <% @competitor.messages.order(created_at: :desc).each do |message| %>
+      <% competitor.messages.order(created_at: :desc).each do |message| %>
         <% if message.category == "ID" %> 
           <div class="bodyComments">
             <div class="infoComments">

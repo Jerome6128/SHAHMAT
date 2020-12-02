@@ -30,7 +30,7 @@ class JobscraperJob < ApplicationJob
 
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
-    browser = Ferrum::Browser.new(timeout: 60)
+    browser = Ferrum::Browser.new({ timeout: 60, headless: true, process_timeout: 60 })
     url = "https://www.welcometothejungle.com/fr/companies/#{competitor.brand_name.parameterize}/jobs"
     browser.goto(url)
     browser.mouse.scroll_to(0, 400)
@@ -41,6 +41,7 @@ class JobscraperJob < ApplicationJob
     end
 
     html_doc = Nokogiri::HTML(browser.body)
+    browser.quit
     # p html_doc
     jobs = []
     html_doc.search(".sc-1flb27e-5").each do |element|
