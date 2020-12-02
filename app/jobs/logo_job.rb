@@ -10,7 +10,7 @@ class LogoJob < ApplicationJob
     browser.quit
     logo_data = html_doc.search('//*[@id="islrg"]/div[1]/div[1]/a[1]/div[1]/img').attribute('src').value
 
-    base64_image = logo_data.split(",")[1]
+    base64_image = logo_data.split(",").last
     img_from_base64 = Base64.decode64(base64_image)
     filetype = /(png|jpg|jpeg|gif|PNG|JPG|JPEG|GIF)/.match(img_from_base64[0,16])[0]
     filename = competitor.trading_name
