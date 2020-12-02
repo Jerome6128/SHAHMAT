@@ -2,8 +2,8 @@ class LogoJob < ApplicationJob
   queue_as :default
 
   def perform(competitor_id)
-    competitor = Competitor.find(timeout: 60, headless: true, process_timeout: 60)
-    browser = Ferrum::Browser.new(timeout: 60)
+    competitor = Competitor.find(competitor_id)
+    browser = Ferrum::Browser.new({ timeout: 60, headless: true, process_timeout: 60 })
     url = "https://www.google.com/search?q=#{competitor.trading_name}+logo&tbm=isch"
     browser.goto(url)
     html_doc = Nokogiri::HTML(browser.body)
