@@ -12,9 +12,8 @@
       <h2><%= competitor.brand_name %></h2>
     </div>
   </div>
-  <%# <hr>
-  <h3>Finance</h3>
-  <hr> %>
+  <br>
+
   <div class="contentShow">
     <table class="table table-striped">
       <tbody>
@@ -42,7 +41,7 @@
       <button id="updateDetails">Add a comment</button>
       <% if @competitor.messages.where(category: "Key Figures").present? %>
         <% @competitor.messages.order(created_at: :desc).each do |message| %>
-          <% if message.category == "Key Figures" %> 
+          <% if message.category == "Key Figures" %>
             <div class="bodyComments">
               <div class="infoComments">
                 <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
