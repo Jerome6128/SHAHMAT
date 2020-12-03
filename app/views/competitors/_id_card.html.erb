@@ -23,7 +23,7 @@
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Trading name: </strong><%= competitor.trading_name %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Address: </strong> <%= competitor.address %></li>
-          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= competitor.website %></li>
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= link_to competitor.website, competitor.website,:target => '_blank' %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIREN: </strong> <%= competitor.siren %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>RCS: </strong> <%= competitor.rcs %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIRET: </strong> <%= competitor.siret %></li>

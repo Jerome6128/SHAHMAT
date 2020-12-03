@@ -4,12 +4,8 @@ class ClearbitJob < ApplicationJob
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
     url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=#{competitor.trading_name}"
-
-    competitor_serialized = open(url).read
-    competitor_json = JSON.parse(competitor_serialized)
-    p competitor_json
-
-
+    competitor_autocomplete = HTTParty.get(url).first
+    competitor.website = "https://www.#{competitor_autocomplete['domain']}"
     competitor.save
     CompetitorChannel.broadcast_to(
       competitor,
