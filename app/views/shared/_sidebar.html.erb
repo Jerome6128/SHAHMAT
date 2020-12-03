@@ -5,7 +5,7 @@
     <% end %>
     <p>Shahmat</p>
   </div>
-  
+
   <div class="link-text-sidebar">
     <p class="<%= "highlight" if params[:action] == "index" %> menu-item pl-2 py-2"><i class="fas fa-rocket"></i> <%= link_to "My dashboard", competitors_path %></p>
     <p class="<%= "highlight menu-item" if params[:action] == "new" %> pl-2 py-2"><i class="fas fa-user-edit"></i> <%= link_to "Add a competitor", new_competitor_path %></p>
@@ -15,10 +15,10 @@
           <%= @competitor.trading_name %>
         </div>
         <div class="section">
-          <%= link_to "Legal information", competitor_path(@competitor, :section => "ID" ) %>
-          <%= link_to "Recruitments", competitor_path(@competitor, :section => "HR" ) %>
-          <%= link_to "Finance", competitor_path(@competitor, :section => "Key Figures" ) %>
-          <%= link_to "Brands", competitor_path(@competitor, :section => "Brands" ) %>
+          <%= link_to "Legal information", competitor_path(@competitor, :section => "ID"), class: "#{ 'active' if params[:section] == "ID"}" %>
+          <%= link_to "Recruitment", competitor_path(@competitor, :section => "HR"), class: "#{ 'active' if params[:section] == "HR"}"%>
+          <%= link_to "Finance", competitor_path(@competitor, :section => "Key Figures"), class: "#{ 'active' if params[:section] == "Key Figures"}" %>
+          <%= link_to "Brands", competitor_path(@competitor, :section => "Brands" ), class: "#{ 'active' if params[:section] == "Brands"}" %>
         </div>
       </div>
     <% end %>

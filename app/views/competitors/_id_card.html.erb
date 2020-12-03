@@ -47,7 +47,7 @@
         <p class="idComments">LEGAL INFORMATION</p>
       </div>
       <button id="updateDetails">Add a comment</button>
-      <% if @competitor.messages.where(category: "ID").present? %>
+      <% if competitor.messages.where(category: "ID").present? %>
         <% competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "ID" %>
             <div class="bodyComments">
