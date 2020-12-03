@@ -1,14 +1,20 @@
 <div class="container <%= "hidden" unless params[:section] == "HR" %>">
-  <div>
-    <% if @competitor.photo.attached? %>
-      <%= cl_image_tag @competitor.photo.key %>
-    <% else %>
-      <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
-    <% end %>
+ <div class="d-flex align-items-center mb-3">
+    <div class="logowebsite">
+      <% if @competitor.photo.attached? %>
+        <%= cl_image_tag @competitor.photo.key %>
+      <% else %>
+        <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
+      <% end %>
+      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
+    </div>
+    <div>
+      <h2><%= competitor.brand_name %></h2>
+    </div>
   </div>
-  <hr>
-  <h3 class=""> Recruitments</h3>
-  <hr>
+  <%# <hr>
+  <h3> Recruitments</h3>
+  <hr> %>
   <div class="contentShow">
     <div class="list-jobcard">
       <h3 style="font-size: 1.75rem; margin-bottom:30px;"> <%= competitor.job_offers.count %> Last job offers</h3>
@@ -28,7 +34,7 @@
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "HR").count %> </span></h3>
         <p class="hrComments">RECRUITMENTS</p>
       </div>
-      <%# <%= render "shared/popupform" %>
+      <button id="updateDetails">Add a comment</button>
       <% if @competitor.messages.where(category: "HR").present? %>
         <% @competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "HR" %>

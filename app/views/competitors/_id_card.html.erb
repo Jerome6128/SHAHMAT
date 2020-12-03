@@ -1,16 +1,22 @@
 <div class="container <%= "hidden" unless visible %>">
-  <div>
-    <% if competitor.photo.attached? %>
-      <%= cl_image_tag competitor.photo.key %>
-    <% else %>
-       <div class="loadingio-spinner-gear-5hwze92ux6i"><div class="ldio-1m8qvz9e16p">
-      <div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div></div>
-    <% end %>
+  <div class="d-flex align-items-center mb-3">
+    <div class="logowebsite">
+      <% if competitor.photo.attached? %>
+        <%= cl_image_tag competitor.photo.key %>
+      <% else %>
+        <div class="loadingio-spinner-gear-5hwze92ux6i"><div class="ldio-1m8qvz9e16p">
+        <div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div></div>
+      <% end %>
+      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
+    </div>
+    <div>
+      <h2><%= competitor.brand_name %></h2>
+    </div>
   </div>
-  <hr>
+  <%# <hr>
   <h3>Legal information</h3>
-  <hr>
+  <hr> %>
   <div class="contentShow">
     <div>
       <div class="scrapdatabox">
@@ -22,8 +28,9 @@
         <ul class="px-3 py-2 list-unstyled">
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Trading name: </strong><%= competitor.trading_name %></li>
+
+          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= link_to competitor.website, competitor.website,:target => '_blank' %></li>
           <li class="mb-2 address-li"><i class="fa fa-square"></i>  <div class="addressdiv"><strong>Address: </strong><span class="addressblock"> <%= competitor.address %></span></div></li>
-          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= competitor.website %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIREN: </strong> <%= competitor.siren %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>RCS: </strong> <%= competitor.rcs %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIRET: </strong> <%= competitor.siret %></li>
@@ -39,7 +46,7 @@
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "ID").count %> </span></h3>
         <p class="idComments">LEGAL INFORMATION</p>
       </div>
-      <%# <%= render "shared/popupform" %>
+      <button id="updateDetails">Add a comment</button>
       <% if competitor.messages.where(category: "ID").present? %>
         <% competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "ID" %>

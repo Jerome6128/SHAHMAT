@@ -16,8 +16,8 @@
         </div>
         <div class="section">
           <%= link_to "Legal information", competitor_path(@competitor, :section => "ID"), class: "#{ 'active' if params[:section] == "ID"}" %>
-          <%= link_to "Human ressource", competitor_path(@competitor, :section => "HR"), class: "#{ 'active' if params[:section] == "HR"}"%>
-          <%= link_to "Key figures", competitor_path(@competitor, :section => "Key Figures"), class: "#{ 'active' if params[:section] == "Key Figures"}" %>
+          <%= link_to "Recruitment", competitor_path(@competitor, :section => "HR"), class: "#{ 'active' if params[:section] == "HR"}"%>
+          <%= link_to "Finance", competitor_path(@competitor, :section => "Key Figures"), class: "#{ 'active' if params[:section] == "Key Figures"}" %>
           <%= link_to "Brands", competitor_path(@competitor, :section => "Brands" ), class: "#{ 'active' if params[:section] == "Brands"}" %>
         </div>
       </div>
