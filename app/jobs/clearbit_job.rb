@@ -5,6 +5,10 @@ class ClearbitJob < ApplicationJob
     competitor = Competitor.find(competitor_id)
     url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=#{competitor.trading_name}"
 
+    competitor_serialized = open(url).read
+    competitor_json = JSON.parse(competitor_serialized)
+    p competitor_json
+
 
     competitor.save
     CompetitorChannel.broadcast_to(
