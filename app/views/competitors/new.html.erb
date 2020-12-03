@@ -1,16 +1,18 @@
 <div class="flex-container">
   <%= render "shared/sidebar" %>
-  <div class="container text-center pt-5 w-500 container-top-band
+  <div class="container text-center pt-5 w-500
   sidebar-margin">
-    <h4>Just give us the <em>siren</em> of your competitor and Shahmat will fetch the rest</h2>
+    <h4>Just give us the <strong>siren</strong> of your competitor and Shahmat will fetch the rest</h2>
       <div class="loadingio-spinner-bean-eater-bdr3rdi6xf"><div class="ldio-2mai6tbnnws">
 <div><div></div><div></div><div></div></div><div><div></div><div></div><div></div></div>
 </div></div>
+
     <div class="form-style">
       <%= simple_form_for(@competitor) do |f| %>
-        <%= f.input :siren, required: true  %>
+        <%= f.input :siren, required: true , placeholder: "999 999 999" %>
         <%= f.button :submit %>
       <% end %>
     </div>
+      <p style="margin-top : 70px;"> <em>Shahmat technologies will gather and update data through different places : infogreffe.com, societe.com, linkedin.com, welcometothejungle.com, indeed.com, google.com... </em></p>
   </div>
 </div>

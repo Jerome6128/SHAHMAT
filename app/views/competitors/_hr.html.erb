@@ -18,7 +18,7 @@
             <p><%= job_offer.location %></p>
             <p>posted : <%= job_offer.posting_date %> on <%= job_offer.source %></p>
           </div>
-          <%= link_to "", job_offer.job_url, target: :_blank%>
+          <%= link_to "Show details", job_offer.job_url, target: :_blank, class: "job-details-link"%>
         </div>
       <% end %>
     </div>

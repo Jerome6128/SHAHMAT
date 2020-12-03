@@ -2,9 +2,10 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px;
 }
 
 .jobcard h2 {
@@ -22,13 +23,21 @@
 }
 
 .jobcard .jobcard-infos {
-  padding: 16px;
+  width: 80%;
 }
 
-.jobcard a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right:0;
+
+
+.job-details-link {
+  display: none;
+  border-style: unset;
+  background-color: #993399;
+  color: white;
+  border-radius: 5px;
+  width: 80px;
+}
+
+.jobcard:hover .job-details-link {
+  display: block;
+
 }
