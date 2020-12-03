@@ -11,7 +11,6 @@
   align-items: flex-start;
   padding: 10px 20px 0px 20px;
   position: relative;
-  margin-bottom: 50px;
 }
 
 .nbComments {
@@ -21,13 +20,13 @@
   border-radius: 50%;
   font-size: 15px;
   background-color: #993399;
-  padding: 10px;
+  padding: 13px;
   display: flex;
   align-items: center;
   color: white;
   position: absolute;
   left: 168px;
-  top: 19px;
+  top: 15px;
 }
 
 .bodyComments {
@@ -55,10 +54,16 @@
   border-radius: 10px;
   color: white;
   padding: 5px;
+  text-align: center;
   width: 180px;
   height: 30px;
   font-size: 13px;
-  text-align: center;
+  // height: 68px;
+  // width: 495px;
+  // font-size: 40px;
+  // position: absolute;
+  // right: 0;
+  // bottom: 0px;
 }
 
 .hrComments {
@@ -66,10 +71,16 @@
   border-radius: 10px;
   color: white;
   padding: 5px;
+  text-align: center;
   width: 180px;
   height: 30px;
   font-size: 13px;
-  text-align: center;
+  // height: 68px;
+  // width: 495px;
+  // font-size: 40px;
+  // position: absolute;
+  // right: 0;
+  // bottom: 0px;
 }
 
 .idComments {
@@ -77,8 +88,14 @@
   border-radius: 10px;
   color: white;
   padding: 5px;
+  text-align: center;
   width: 180px;
   height: 30px;
   font-size: 13px;
-  text-align: center;
+  // height: 68px;
+  // width: 495px;
+  // font-size: 40px;
+  // position: absolute;
+  // right: 0;
+  // bottom: 0px;
 }
