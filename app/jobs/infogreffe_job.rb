@@ -23,6 +23,8 @@ class InfogreffeJob < ApplicationJob
     # retrieve the trading name of the company
     competitor.trading_name = html_doc.search('/html/body/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div/div/div/div[3]/div/div[1]/div[2]/table/tbody/tr/td[1]/div[4]/text()').text.strip
     competitor.trading_name = competitor.brand_name if competitor.trading_name == "null"
+    competitor.trading_name = competitor.trading_name.delete_suffix(" SAS")
+    competitor.trading_name = competitor.trading_name.delete_suffix(" SA")
     # retrieve the legal form of the company
     competitor.legal_form = html_doc.search('/html/body/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div[2]/div/div/div/div[3]/div/div[1]/div[2]/table/tbody/tr/td[1]/div[7]/p').text
     # retrieve the key figures of the company
