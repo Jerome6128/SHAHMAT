@@ -23,6 +23,7 @@ class SocietecomJob < ApplicationJob
     )
     competitor.save
     competitor.reload
-    LogoJob.perform_later(competitor.id)
+    # LogoJob.perform_later(competitor.id)
+    ClearbitJob.perform_later(competitor.id)
   end
 end

@@ -3,9 +3,17 @@ class ClearbitJob < ApplicationJob
 
   def perform(competitor_id)
     competitor = Competitor.find(competitor_id)
-    url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=#{competitor.trading_name}"
-    competitor_autocomplete = HTTParty.get(url).first
+    url = "https://autocomplete.clearbit.com/v1/companies/suggest?query=#{competitor.trading_name.encode("ASCII", "UTF-8", undef: :replace)}"
+    competitor_autocomplete = HTTParty.get(url)
+    if competitor_autocomplete.size == 1
+      competitor_autocomplete = competitor_autocomplete.first
+    else
+      competitor_autocomplete = competitor_autocomplete.select { |item| item["name"].capitalize == competitor.trading_name.capitalize }
+    end
     competitor.website = "https://www.#{competitor_autocomplete['domain']}"
+    file = URI.open(competitor_autocomplete['logo'])
+    competitor.photo.attach(io: file, filename: competitor.trading_name, content_type: "image/png")
+
     competitor.save
     CompetitorChannel.broadcast_to(
       competitor,
