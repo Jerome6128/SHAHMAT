@@ -1,6 +1,6 @@
 <div class="container <%= "hidden" unless visible %>">
   <div class="d-flex align-items-center mb-3">
-    <div class="logowebsite">
+    <div>
       <% if competitor.photo.attached? %>
         <%= cl_image_tag competitor.photo.key %>
       <% else %>
@@ -8,10 +8,9 @@
         <div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div></div>
       <% end %>
-      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
     </div>
-    <div>
-      <h2><%= competitor.brand_name %></h2>
+    <div id="btn-website">
+      <%= link_to "Website", competitor.website,:target => "_blank" %>
     </div>
   </div>
   <br>
@@ -26,8 +25,7 @@
         <ul class="px-3 py-2 list-unstyled">
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Trading name: </strong><%= competitor.trading_name %></li>
-
-          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= link_to competitor.website, competitor.website,:target => '_blank' %></li>
+          <%# <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= link_to competitor.website, competitor.website,:target => '_blank'</li> %>
           <li class="mb-2 address-li"><i class="fa fa-square"></i>  <div class="addressdiv"><strong>Address: </strong><span class="addressblock"> <%= competitor.address %></span></div></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIREN: </strong> <%= competitor.siren %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>RCS: </strong> <%= competitor.rcs %></li>
