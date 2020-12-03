@@ -10,7 +10,8 @@
   <h3 class=""> Recruitments</h3>
   <hr>
   <div class="contentShow">
-    <div class="row">
+    <div class="list-jobcard">
+      <h3 style="font-size: 1.75rem; margin-bottom:30px;"> <%= competitor.job_offers.count %> Last job offers</h3>
       <% @competitor.job_offers.each do |job_offer| %>
         <div class="jobcard col-12 ">
           <div class="jobcard-infos">
@@ -18,7 +19,7 @@
             <p><%= job_offer.location %></p>
             <p>posted : <%= job_offer.posting_date %> on <%= job_offer.source %></p>
           </div>
-          <%= link_to "Show details", job_offer.job_url, target: :_blank, class: "job-details-link"%>
+          <%= link_to " ", job_offer.job_url, target: :_blank, class: "job-details-link"%>
         </div>
       <% end %>
     </div>
