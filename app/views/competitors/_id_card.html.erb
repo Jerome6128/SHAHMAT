@@ -1,16 +1,19 @@
 <div class="container <%= "hidden" unless visible %>">
-  <div class="scrapdatabox">
-    <% if competitor.photo.attached? %>
-      <%= cl_image_tag competitor.photo.key %>
-    <% else %>
-       <div class="loadingio-spinner-gear-5hwze92ux6i"><div class="ldio-1m8qvz9e16p">
-      <div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div></div>
-    <% end %>
+  <div class="d-flex align-items-center mb-3">
+    <div class="logowebsite">
+      <% if competitor.photo.attached? %>
+        <%= cl_image_tag competitor.photo.key %>
+      <% else %>
+        <div class="loadingio-spinner-gear-5hwze92ux6i"><div class="ldio-1m8qvz9e16p">
+        <div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div></div>
+      <% end %>
+      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
+    </div>
+    <div>
+      <h2><%= competitor.brand_name %></h2>
+    </div>
   </div>
-  <%= link_to competitor.website, target: "_blank"  do %>
-    <span>website</span>
-  <% end %>
   <%# <hr>
   <h3>Legal information</h3>
   <hr> %>

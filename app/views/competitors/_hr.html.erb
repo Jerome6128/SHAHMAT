@@ -1,14 +1,20 @@
 <div class="container <%= "hidden" unless params[:section] == "HR" %>">
-  <div>
-    <% if @competitor.photo.attached? %>
-      <%= cl_image_tag @competitor.photo.key %>
-    <% else %>
-      <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
-    <% end %>
+ <div class="d-flex align-items-center mb-3">
+    <div class="logowebsite">
+      <% if @competitor.photo.attached? %>
+        <%= cl_image_tag @competitor.photo.key %>
+      <% else %>
+        <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
+      <% end %>
+      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
+    </div>
+    <div>
+      <h2><%= competitor.brand_name %></h2>
+    </div>
   </div>
-  <hr>
-  <h3 class=""> Recruitments</h3>
-  <hr>
+  <%# <hr>
+  <h3> Recruitments</h3>
+  <hr> %>
   <div class="contentShow">
     <div class="row">
       <% @competitor.job_offers.each do |job_offer| %>
