@@ -1,7 +1,6 @@
 .sidebar {
   min-width: 220px;
   height: 100vh;
-  padding: 10px 10px 10px 10px;
   display: inline-block;
   background-color: #363740;
   // background-color: #120078;
@@ -20,6 +19,8 @@
 
 .sidebar-logo {
   align-items: center;
+  margin-top: 10px;
+  margin-left: 10px
 }
 
 .sidebar-logo a {
@@ -71,6 +72,7 @@
 
 .section a {
   padding: 10px 10px 0 30px;
+  margin-left:10px;
 }
 
 .section a:hover {
@@ -88,4 +90,8 @@
 .link-text-sidebar a:hover {
   text-decoration: none;
   color: #shahmat-light-grey;
+}
+
+.fa-user-edit {
+  margin-left: 4px;
 }
