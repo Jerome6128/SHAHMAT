@@ -13,14 +13,14 @@
     <div>
       <div class="scrapdatabox">
         <h3>Summary</h3>
-        <p class="pl-5 py-2"><%= competitor.summary %></p>
+        <p class="px-3 py-2"><%= competitor.summary %></p>
       </div>
       <div class="scrapdatabox">
         <h3>Legal details</h3>
-        <ul class="pl-5 py-2 list-unstyled">
+        <ul class="px-3 py-2 list-unstyled">
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Registration name: </strong><span id="brand-name"><%= competitor.brand_name %></span></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Trading name: </strong><%= competitor.trading_name %></li>
-          <li class="mb-2"><i class="fa fa-square"></i>  <strong>Address: </strong> <%= competitor.address %></li>
+          <li class="mb-2 address-li"><i class="fa fa-square"></i>  <div class="addressdiv"><strong>Address: </strong><span class="addressblock"> <%= competitor.address %></span></div></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>Website: </strong> <%= competitor.website %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>SIREN: </strong> <%= competitor.siren %></li>
           <li class="mb-2"><i class="fa fa-square"></i>  <strong>RCS: </strong> <%= competitor.rcs %></li>
@@ -37,22 +37,26 @@
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "ID").count %> </span></h3>
         <p class="idComments">LEGAL INFORMATION</p>
       </div>
-      <%= render "shared/popupform" %>
-      <% competitor.messages.order(created_at: :desc).each do |message| %>
-        <% if message.category == "ID" %>
-          <div class="bodyComments">
-            <div class="infoComments">
-              <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-              <br>
-              <%= message.user.name.capitalize %>
-              <br>
-              <%= message.created_at.strftime("%d/%m/%Y") %>
-              <br>
-              <%= message.created_at.strftime("%H:%M") %>
+      <%# <%= render "shared/popupform" %>
+      <% if @competitor.messages.where(category: "ID").present? %>
+        <% competitor.messages.order(created_at: :desc).each do |message| %>
+          <% if message.category == "ID" %>
+            <div class="bodyComments">
+              <div class="infoComments">
+                <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+                <br>
+                <%= message.user.name.capitalize %>
+                <br>
+                <%= message.created_at.strftime("%d/%m/%Y") %>
+                <br>
+                <%= message.created_at.strftime("%H:%M") %>
+              </div>
+              <div class="textComments"><%= message.content %></div>
             </div>
-            <div class="textComments"><%= message.content %></div>
-          </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <span class="bodyComments"><%= "Be the first to leave a comment !" %></span>
       <% end %>
     </div>
   </div>
