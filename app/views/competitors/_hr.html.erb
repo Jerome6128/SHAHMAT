@@ -27,7 +27,7 @@
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "HR").count %> </span></h3>
         <p class="hrComments">RECRUITMENTS</p>
       </div>
-      <%# <%= render "shared/popupform" %>
+      <button id="updateDetails">Add a comment</button>
       <% if @competitor.messages.where(category: "HR").present? %>
         <% @competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "HR" %>

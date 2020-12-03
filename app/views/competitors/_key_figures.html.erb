@@ -33,7 +33,7 @@
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "Key Figures").count %> </span></h3>
         <p class="kfComments">FINANCE</p>
       </div>
-      <%# <%= render "shared/popupform" %>
+      <button id="updateDetails">Add a comment</button>
       <% if @competitor.messages.where(category: "Key Figures").present? %>
         <% @competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "Key Figures" %> 
