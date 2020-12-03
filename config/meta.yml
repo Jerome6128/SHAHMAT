@@ -1,5 +1,5 @@
 meta_product_name: "Shahmat"
 meta_title: "SHAHMAT - Stay in control of the game"
 meta_description: "Nowadays, information is everywhere, about everything and everyone. It diffuses, amplifies, deforms as it spreads. And the relevant information, the information you seek, ends up being drowned in the mass. Of course, it is available to anyone who takes the time to look for it, but time, on the contrary, is scarce and limited."
-meta_image: "chessFullHD.mp4" # should exist in `app/assets/images/`
+meta_image: "shahmat_1200*630.jpg" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
