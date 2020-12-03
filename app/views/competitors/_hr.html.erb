@@ -1,19 +1,17 @@
 <div class="container <%= "hidden" unless params[:section] == "HR" %>">
  <div class="d-flex align-items-center mb-3">
-    <div class="logowebsite">
+    <div>
       <% if @competitor.photo.attached? %>
         <%= cl_image_tag @competitor.photo.key %>
       <% else %>
         <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
       <% end %>
-      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
     </div>
-    <div>
-      <h2><%= competitor.brand_name %></h2>
+    <div id="btn-website">
+      <%= link_to "Website", competitor.website,:target => "_blank" %>
     </div>
   </div>
   <br>
-
   <div class="contentShow">
     <div class="list-jobcard">
       <div class="job-comments">
@@ -33,7 +31,7 @@
     <div class="comments">
       <div class="headerComments">
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "HR").count %> </span></h3>
-        <p class="hrComments">RECRUITMENTS</p>
+        <p class="hrComments">RECRUITMENT</p>
       </div>
       <button id="updateDetails">Add a comment</button>
       <% if @competitor.messages.where(category: "HR").present? %>

@@ -1,19 +1,17 @@
 <div class="container <%= "hidden" unless params[:section] == "Key Figures" %>">
   <div class="d-flex align-items-center mb-3">
-    <div class="logowebsite">
+    <div>
       <% if @competitor.photo.attached? %>
         <%= cl_image_tag @competitor.photo.key %>
       <% else %>
         <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
       <% end %>
-      <%= link_to "#{competitor.brand_name} website", competitor.website,:target => "_blank" %>
     </div>
-    <div>
-      <h2><%= competitor.brand_name %></h2>
+    <div id="btn-website">
+      <%= link_to "Website", competitor.website,:target => "_blank" %>
     </div>
   </div>
   <br>
-
   <div class="contentShow">
     <table class="table table-striped">
       <tbody>
