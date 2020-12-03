@@ -12,12 +12,13 @@
       <h2><%= competitor.brand_name %></h2>
     </div>
   </div>
-  <%# <hr>
-  <h3> Recruitments</h3>
-  <hr> %>
+  <br>
+
   <div class="contentShow">
     <div class="list-jobcard">
-      <h3 style="font-size: 1.75rem; margin-bottom:30px;"> <%= competitor.job_offers.count %> Last job offers</h3>
+      <div class="job-comments">
+        <h3 style="font-size: 1.75rem; margin-bottom:30px;"> Last job offers <span class="nbComments"><%= competitor.job_offers.count %> </span></h3>
+      </div>
       <% @competitor.job_offers.each do |job_offer| %>
         <div class="jobcard col-12 ">
           <div class="jobcard-infos">
