@@ -26,6 +26,7 @@ class CompetitorsController < ApplicationController
 
   def new
     @competitor = Competitor.new
+    @competitor.siren = nil
   end
 
   def create

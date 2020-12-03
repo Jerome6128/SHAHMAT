@@ -6,6 +6,8 @@
 
 .scrapdatabox {
   padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
   background: white;
   border-radius: 15px;
 }
@@ -18,4 +20,18 @@
 
 .scrapdatabox i {
   color: #993399;
+}
+
+.addressblock {
+  word-wrap: break-word;
+  max-width: 320px;
+  margin-left: 5px;
+}
+
+.addressdiv {
+  display: flex;
+}
+
+.address-li {
+  display: flex;
 }
