@@ -41,7 +41,7 @@
         <p class="idComments">LEGAL INFORMATION</p>
       </div>
       <%# <%= render "shared/popupform" %>
-      <% if @competitor.messages.where(category: "ID").present? %>
+      <% if competitor.messages.where(category: "ID").present? %>
         <% competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "ID" %>
             <div class="bodyComments">
