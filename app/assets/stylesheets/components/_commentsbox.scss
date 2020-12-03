@@ -2,18 +2,32 @@
   background-color: white;
   padding: 10px;
   border-radius: 15px;
-}
+  height: fit-content;
+ }
 
 .headerComments {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px 20px 0px 20px;
+  position: relative;
+  margin-bottom: 50px;
 }
 
 .nbComments {
-  padding: 10px 20px 0px 20px;
-  font-style: italic;
+  justify-content: space-evenly;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 15px;
+  background-color: #993399;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: absolute;
+  left: 168px;
+  top: 19px;
 }
 
 .bodyComments {

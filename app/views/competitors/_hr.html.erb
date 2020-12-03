@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <hr>
-  <h3 class=""> Last job offers</h3>
+  <h3 class=""> Recruitments</h3>
   <hr>
   <div class="contentShow">
     <div class="row">
@@ -24,25 +24,29 @@
     </div>
     <div class="comments">
       <div class="headerComments">
-        <h3>Comments</h3>
-        <p class="hrComments">HUMAN RESSOURCE</p>
+        <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "HR").count %> </span></h3>
+        <p class="hrComments">RECRUITMENTS</p>
       </div>
-      <p class="nbComments">number of comments #<%= @competitor.messages.where(category: "HR").count %></p>
-      <% @competitor.messages.order(created_at: :desc).each do |message| %>
-        <% if message.category == "HR" %>
-          <div class="bodyComments">
-            <div class="infoComments">
-              <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-              <br>
-              <%= message.user.name.capitalize %>
-              <br>
-              <%= message.created_at.strftime("%d/%m/%Y") %>
-              <br>
-              <%= message.created_at.strftime("%H:%M") %>
+      <%# <%= render "shared/popupform" %>
+      <% if @competitor.messages.where(category: "HR").present? %>
+        <% @competitor.messages.order(created_at: :desc).each do |message| %>
+          <% if message.category == "HR" %>
+            <div class="bodyComments">
+              <div class="infoComments">
+                <%= cl_image_tag message.user.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
+                <br>
+                <%= message.user.name.capitalize %>
+                <br>
+                <%= message.created_at.strftime("%d/%m/%Y") %>
+                <br>
+                <%= message.created_at.strftime("%H:%M") %>
+              </div>
+              <div class="textComments"><%= message.content %></div>
             </div>
-            <div class="textComments"><%= message.content %></div>
-          </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <span class="bodyComments"><%= "Be the first to leave a comment !" %></span>
       <% end %>
     </div>
   </div>
