@@ -17,6 +17,7 @@
   color : $shahmat-grey
 }
 
+
 .sidebar-logo {
   align-items: center;
   margin-top: 10px;
@@ -73,6 +74,10 @@
 .section a {
   padding: 10px 10px 0 30px;
   margin-left:10px;
+}
+
+.section .active {
+  color: $shahmat-light-grey;
 }
 
 .section a:hover {
