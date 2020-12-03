@@ -1,3 +1,10 @@
+.list-jobcard {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  height: fit-content;
+}
+
 .jobcard {
   overflow: hidden;
   height: 120px;
@@ -5,7 +12,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  border: 0.1px solid $shahmat-light-grey;
+  padding-bottom: 10px;
 }
 
 .jobcard h2 {
@@ -23,21 +33,31 @@
 }
 
 .jobcard .jobcard-infos {
-  width: 80%;
+  padding-left:15px;
+  padding-bottom: 20px;
 }
-
 
 
 .job-details-link {
-  display: none;
-  border-style: unset;
-  background-color: #993399;
-  color: white;
-  border-radius: 5px;
-  width: 80px;
+  position: absolute;
+  top: 0;
+  bottom:0;
+  left:0;
+  right: 0;
 }
 
-.jobcard:hover .job-details-link {
-  display: block;
-
+.jobcard:hover {
+  border-color : $shahmat-grey;
+  transform: translateY(-5px);
 }
+
+
+// .job-details-link:hover {
+//   text-decoration:none;
+//   color: white;
+// }
+
+// .jobcard:hover .job-details-link {
+//   display: block;
+
+// }

@@ -1,16 +1,22 @@
 <div class="container <%= "hidden" unless params[:section] == "HR" %>">
-  <div>
-    <% if @competitor.photo.attached? %>
-      <%= cl_image_tag @competitor.photo.key %>
-    <% else %>
-      <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
-    <% end %>
+ <div class="d-flex align-items-center mb-3">
+    <div>
+      <% if @competitor.photo.attached? %>
+        <%= cl_image_tag @competitor.photo.key %>
+      <% else %>
+        <%= image_tag "logo-not-found.jpg", class: "competitor-logo" %>
+      <% end %>
+    </div>
+    <div id="btn-website">
+      <%= link_to "Website", competitor.website,:target => "_blank" %>
+    </div>
   </div>
-  <hr>
-  <h3 class=""> Recruitments</h3>
-  <hr>
+  <br>
   <div class="contentShow">
-    <div class="row">
+    <div class="list-jobcard">
+      <div class="job-comments">
+        <h3 style="font-size: 1.75rem; margin-bottom:30px;"> Last job offers <span class="nbComments"><%= competitor.job_offers.count %> </span></h3>
+      </div>
       <% @competitor.job_offers.each do |job_offer| %>
         <div class="jobcard col-12 ">
           <div class="jobcard-infos">
@@ -18,16 +24,16 @@
             <p><%= job_offer.location %></p>
             <p>posted : <%= job_offer.posting_date %> on <%= job_offer.source %></p>
           </div>
-          <%= link_to "Show details", job_offer.job_url, target: :_blank, class: "job-details-link"%>
+          <%= link_to " ", job_offer.job_url, target: :_blank, class: "job-details-link"%>
         </div>
       <% end %>
     </div>
     <div class="comments">
       <div class="headerComments">
         <h3>Comments <span class="nbComments"> <%= competitor.messages.where(category: "HR").count %> </span></h3>
-        <p class="hrComments">RECRUITMENTS</p>
+        <p class="hrComments">RECRUITMENT</p>
       </div>
-      <%# <%= render "shared/popupform" %>
+      <button id="updateDetails">Add a comment</button>
       <% if @competitor.messages.where(category: "HR").present? %>
         <% @competitor.messages.order(created_at: :desc).each do |message| %>
           <% if message.category == "HR" %>

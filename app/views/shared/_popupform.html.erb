@@ -11,15 +11,9 @@
 
 <dialog id="favDialog">
   <%= simple_form_for [@competitor, @message] do |f| %>
-    <span class="dnone"><%= f.input :category, input_html: { value: params[:section] } %></span>
+    <span class="d-none"><%= f.input :category, input_html: { value: params[:section] } %></span>
     <%= f.input :content, label: "Message" %>
     <button id="cancelMessage">Cancel</button> <%= f.button :submit, "Send", id: "createMessage" %>
   <% end %>
 </dialog>
-<button id="updateDetails">Add a comment</button>
-
-<style>
-  .dnone {
-    display: none;
-  }
-</style>
+<%# <button id="updateDetails">Add a comment</button> %>

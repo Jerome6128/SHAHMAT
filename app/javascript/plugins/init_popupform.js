@@ -1,10 +1,10 @@
 const initPopupform = () => {
-  const updateButton = document.getElementById('updateDetails');
+  const updateButtons = document.querySelectorAll('#updateDetails');
   const favDialog = document.getElementById('favDialog');
   const cancelButton = document.getElementById('cancelMessage');
 
   // Le bouton "mettre à jour les détails" ouvre la boîte de dialogue
-  if (updateButton) {
+  updateButtons.forEach((updateButton) => {
     updateButton.addEventListener('click', function onOpen() {
       if (typeof favDialog.showModal === "function") {
         favDialog.showModal();
@@ -16,7 +16,7 @@ const initPopupform = () => {
       event.preventDefault();
       favDialog.close();
     });
-  };
+  });
 };
 
 export { initPopupform };
