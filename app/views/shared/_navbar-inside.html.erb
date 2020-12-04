@@ -3,7 +3,7 @@
     <ul class="navbar-nav-inside mr-auto list-unstyled">
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
-          <i class="fa fa-search" aria-hidden="true"></i> 
+          <i class="fa fa-search" aria-hidden="true"></i>
           <i class="fa fa-bell" aria-hidden="true"></i> |
           <span class="current-user-name"><%= current_user.name.capitalize %></span>
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
